@@ -1,0 +1,70 @@
+<div class="function-item checkbox-item">
+    <button class="btn checkbox icon" (click)="onCheckAllContacts()">
+        <i class="material-icons">{{ isAllChecked() ? 'check_box' : 'check_box_outline_blank'}}</i>
+    </button>
+</div>
+
+
+
+<!--<span>{{ true ? 'Контакты' : 'Группы'}}</span>
+<button class="add icon" (click)="addContact()">
+    
+    <i class="material-icons">arrow_drop_down</i>
+</button>-->
+
+<div class="function-item undo-item">
+    <button class="btn backup icon" (click)="onUndoChangedContact()">
+        <i class="material-icons">undo</i>
+    </button>
+</div>
+
+<div class="function-item morehoriz-item">
+    <div class="btn morehoriz icon">
+        <label for="field-checkbox-morehoriz" class="material-icons">more_horiz</label>
+    </div>
+    <input type="checkbox" id="field-checkbox-morehoriz">
+    <div class="sub-panel">
+        <button class="sub-panel-item mail-sub-item" (click)="onMailMatchedContacts()">
+            <p>{{ localLanguage === 'RUS' ? 'Написать выбранным контактам' : 'Mail checked contacts'}}</p>
+        </button>
+
+        <button class="sub-panel-item phone-sub-item" (click)="onPhoneMatchedContacts()">
+            <p>{{ localLanguage === "RUS" ? 'Позвонить выбранным контактам' : 'Phone checked contacts'}}</p>
+        </button>
+
+        <button class="sub-panel-item group-sub-item" (click)="onGroupMatchedContacts()">
+            <p>{{ localLanguage === "RUS" ? 'Добавить контактов в группу' : 'Add checked contacts in group'}}</p>
+        </button>
+
+        <button class="sub-panel-item sort-secondname-sub-item" (click)="onSortLastNameContactsUp()">
+            <p>{{ localLanguage === "RUS" ? 'Сортировать по фамилии' : 'Sorted list by lastname'}}</p>
+        </button>
+
+        <button class="sub-panel-item sort-firstname-sub-item" (click)="onSortFirstNameContactsUp()">
+            <p>{{ localLanguage === "RUS" ? 'Сортировать по имени' : 'Sorted list by firstname'}}<i class="material-icons icon">undo</i></p>
+        </button>
+
+        <button class="sub-panel-item delete-sub-item" (click)="onDeleteMatchedContacts()">
+            <p>{{ localLanguage === "RUS" ? 'Удалить выбранные контактам' : 'Delete checked contacts'}}</p>
+        </button>
+    </div>
+</div>
+
+
+<div class="function-item add-item">
+    <button class="btn add icon" (click)="addContact()">
+        <i class="material-icons">add</i>
+    </button>
+</div>
+
+<div class="function-item search-item">
+    <form class="search-form">
+        <input type="text" class="searching" name="search" [(ngModel)]="searchText" (ngModelChange)="onSearch()" placeholder="Search...">
+        <button class="btn search icon" (click)=onSearch()>
+            <i class="material-icons">search</i>
+        </button>
+        <button *ngIf="searchText" class="btn close icon" (click)=onClose()>
+            <i class="material-icons">close</i>
+        </button>
+    </form>
+</div>

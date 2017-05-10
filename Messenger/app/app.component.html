@@ -1,0 +1,169 @@
+<header>
+    <h1>ContactsBook</h1>
+
+</header>
+
+<main>
+
+    <article class="sidebar">
+        <sidebar></sidebar>
+        <div style="background-color:blue; position:absolute;  top: px; color:white;">
+            <ol>
+                <caption>Todo</caption>
+                <li>Надо чтобы при уменьшении поиск становился последним <br>flex и перходил на вторую строчку</li>
+                <li>Main service должен работать с дельта сервером и локал, <br>пока дельты нет, так как нет реального сервера </li>
+                <li>Надо чтобы до функционал в верхней панели не заезжал за рамку <br>браузера,. ато не не видно и чтобы z-index поиска был<br> меньще, и чтобы был директив для всех движений</li>
+                <li>!!! Важно мы не используем jQure а используем direcrive</li>
+            </ol>
+
+        </div>
+    </article>
+    <article class="middle">
+        <middle></middle>
+    </article>
+    <!--
+    <article class="middle-part" [ngSwitch]="middlePartType">
+        <template [ngSwitchCase]="1">
+            
+            <form class="contacts-form " enctype="multipart/form-data" (ngSubmit)="seeEditContact(); editForm.reset()" #editForm="ngForm">
+                 <div>
+                <span>Persons Information</span>
+            </div>
+                 <div class="panel-functions">
+                    <button class="edit icon" (click)="isEditToggle()">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    <button class="mail icon">
+                        <i class="material-icons">mail</i>
+                    </button>
+                    <button class="phone icon">
+                        <i class="material-icons">phone</i>
+                    </button>
+
+                    <button class="delete icon">
+                        <i class="material-icons">delete</i>
+                    </button>
+                </div>
+                    <div class="input-container">
+                        <label for="user-first-name-field-id" required>First name</label>
+                        <input id="user-first-name-field-id" type="text" name="user-first-name-field" [(ngModel)]="editContact.firstName" placeholder="John" autofocus required tabindex="1" [disabled]="isEdit">
+                    </div>
+                    <div class="input-container">
+                        <label for="user-last-name-field-id">Lastlast name</label>
+                        <input id="user-last-name-field-id" type="text" name="user-last-name-field" [(ngModel)]="editContact.lastName" placeholder="Goldman" tabindex="2" [disabled]="editContact.IsEdit">
+                    </div>
+                    <div class="input-container gender-container" #userFieldId>
+                        <label>Gender</label>
+                        <div class="gender" #userWomanFieldId>
+
+                            <input id="user-gender-woman-field-id" type="radio" name="user-gender-field" [(ngModel)]="editContact.gender" value="woman" [disabled]="isEdit">
+                            <label for="user-gender-woman-field-id" (click)="genderChanged('woman')">Woman</label>
+                        </div>
+                        <div class="gender" #userManFieldId>
+
+                            <input id="user-gender-man-field-id" type="radio" name="user-gender-field" [(ngModel)]="editContact.gender" value="man" [disabled]="isEdit">
+                            <label for="user-gender-man-field-id" (click)="genderChanged('man')">Man</label>
+                        </div>
+                        <div class="gender">
+
+                            <input id="user-gender-any-field-id" type="radio" name="user-gender-field" [(ngModel)]="editContact.gender" value="any" checked [disabled]="isEdit">
+                            <label for="user-gender-any-field-id" (click)="genderChanged('any')">Any</label>
+                        </div>
+                    </div>
+               
+                
+                    <div class="input-container">
+                        <label for="user-phone-name-field-id">Phone</label>
+                        <input id="user-phone-field-id" type="tel" name="tel" [(ngModel)]="editContact.phone" pattern="[0-9]{10}" placeholder="+71861529878" tabindex="3" [disabled]="isEdit">
+                    </div>
+                    <div class="input-container">
+                        <label for="user-email-name-field-id">E-mail</label>
+                        <input id="user-email-field-id" type="email" name="email" [(ngModel)]="editContact.email" pattern="[a-zA-Z_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}" placeholder="example@mail.com" tabindex="4" [disabled]="isEdit">
+                    </div>
+               
+                <button type="submit" >Save changes</button>
+
+            </form>
+        </template>
+
+        <template [ngSwitchCase]="2">
+            <form class="contacts-form" enctype="multipart/form-data" (ngSubmit)="createContact(); createForm.reset()" #createForm="ngForm">
+                <fieldset>
+                    <legend>Main information</legend>
+                    <div class="input-container">
+                        <label for="user-first-name-field-id" reqi>Enter first name</label>
+                        <input id="user-first-name-field-id" type="text" name="user-first-name-field" [(ngModel)]="newContact.firstName" placeholder="John" autofocus required tabindex="1">
+                    </div>
+                    <div class="input-container">
+                        <label for="user-last-name-field-id">Enter last name</label>
+                        <input id="user-last-name-field-id" type="text" name="user-last-name-field" [(ngModel)]="newContact.lastName" placeholder="Goldman" tabindex="2">
+                    </div>
+                    <div class="input-container gender-container" #userFieldId>
+                        <label>Chose gender</label>
+                        <div class="gender" #userWomanFieldId>
+
+                            <input id="user-gender-woman-field-id" type="radio" name="user-gender-field" [(ngModel)]="newContact.gender" value="woman">
+                            <label for="user-gender-woman-field-id" (click)="genderChanged('woman')">Woman</label>
+                        </div>
+                        <div class="gender" #userManFieldId>
+
+                            <input id="user-gender-man-field-id" type="radio" name="user-gender-field" [(ngModel)]="newContact.gender" value="man">
+                            <label for="user-gender-man-field-id" (click)="genderChanged('man')">Man</label>
+                        </div>
+                        <div class="gender">
+
+                            <input id="user-gender-any-field-id" type="radio" name="user-gender-field" [(ngModel)]="newContact.gender" value="any" checked>
+                            <label for="user-gender-any-field-id" (click)="genderChanged('any')">Any</label>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Contact information</legend>
+                    <div class="input-container">
+                        <label for="user-phone-name-field-id">Enter phone</label>
+                        <input id="user-phone-field-id" type="tel" name="tel" [(ngModel)]="newContact.phone" pattern="[0-9]{10}" placeholder="+71861529878" tabindex="3">
+                    </div>
+                    <div class="input-container">
+                        <label for="user-email-name-field-id">Enter e-mail</label>
+                        <input id="user-email-field-id" type="email" name="email" [(ngModel)]="newContact.email" pattern="[a-zA-Z_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}" placeholder="example@mail.com" tabindex="4">
+                    </div>
+                </fieldset>
+                <button type="submit" [disabled]="createForm.form.invalid">Добавить</button>
+
+                <!--<div class="input-container">
+                <span> У вас пока нет прав</span>
+                <button class="expand-more icon">-->
+    <!--<button class="expand-more icon" (click)="hiddenFormToggle()">-->
+    <!--            <i class="material-icons">{{hiddenForm ? 'expand_more' : 'expand_less' }}</i>
+                </button>
+            </div>-->
+    <!--
+            <fieldset [class.hidden-fields]="!hiddenForm">
+                <legend>Additional Information</legend>
+                <div class="input-container">
+                    <label for="user-icon-field-id">Enter icon</label>
+                    <input id="user-icon-field-id" type="file" name="user-icon" tabindex="5">
+                </div>
+                <div class="input-container">
+                    <label for="user-birthday-field-id">Enter birthday</label>
+                    <input id="user-birthday-id" type="date" placeholder="yyyy-mm-dd" tabindex="6">
+                </div>
+                <div class="input-container">
+                    <label for="user-commetns-id">Enter e-mail</label>
+                    <textarea id="user-commetns-id" rows="10" cols="150" tabindex="7">Yours comments.</textarea>
+                </div>
+            </fieldset>
+            -->
+    <!--  </form>
+    </template>
+    <template ngSwitchDefault>
+            <section style="display:flex; flex-direction: column; justify-content:center;">
+                <span style=" margin:0 auto;">
+                <h2 style="padding:5px; color:lightgray;">Welcome to your Contacts Book</h2>
+                </span>
+                <img src="../img/Christmas.jpg" width="350px" style="margin:0 auto;"/>
+            </section>
+        </template>
+    </article>
+    -->
+</main>

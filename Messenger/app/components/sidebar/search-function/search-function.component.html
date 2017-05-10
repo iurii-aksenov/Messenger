@@ -1,0 +1,8 @@
+<div [class.visible]="checkCount >0">
+    <form class="search-form">
+        <input type="text" class="searching" name="search" [(ngModel)]="searchText" (ngModelChange)="onSearch()" placeholder="Search...">
+        <button class="search icon" (click)=onSearch()>
+            <i class="material-icons">search</i>
+        </button>
+    </form>
+</div>

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessengerServer.PresentationLayer", "MessengerServer\MessengerServer.PresentationLayer.csproj", "{0FA585AF-0EA0-4208-BC58-3B30143B2B91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessengerServer.DataAccessLayer", "MessengerServer.DataAccessLayer\MessengerServer.DataAccessLayer.csproj", "{8FF993A5-A9B8-4102-9D5E-14E3428C2515}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessengerServer.BusinessLogicLayer", "MessengerServer.BusinessLogicLayer\MessengerServer.BusinessLogicLayer.csproj", "{7026428A-7CE0-4301-A128-7714ED29F37C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FA585AF-0EA0-4208-BC58-3B30143B2B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FA585AF-0EA0-4208-BC58-3B30143B2B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FA585AF-0EA0-4208-BC58-3B30143B2B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FA585AF-0EA0-4208-BC58-3B30143B2B91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FF993A5-A9B8-4102-9D5E-14E3428C2515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FF993A5-A9B8-4102-9D5E-14E3428C2515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FF993A5-A9B8-4102-9D5E-14E3428C2515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FF993A5-A9B8-4102-9D5E-14E3428C2515}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7026428A-7CE0-4301-A128-7714ED29F37C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7026428A-7CE0-4301-A128-7714ED29F37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7026428A-7CE0-4301-A128-7714ED29F37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7026428A-7CE0-4301-A128-7714ED29F37C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

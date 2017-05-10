@@ -1,0 +1,114 @@
+<form class="contacts-form" enctype="multipart/form-data" [formGroup]="contactForm" novalidate (ngSubmit)="onCreateContact(); contactForm.reset()">
+    <fieldset>
+        <legend>Main information</legend>
+        <div class="input-container form-group">
+            <label for="user-first-name-field-id">Enter first name</label>
+            <input id="user-first-name-field-id" type="text" name="contactFirstName" formControlName="contactFirstName" placeholder="John" autofocus tabindex="1">
+
+            <div class="alert alert-danger" *ngIf="contactForm.controls['contactFirstName'].invalid && contactForm.controls['contactFirstName'].touched">
+                Не указано имя
+            </div>
+        </div>
+        <div class="input-container">
+            <label for="user-last-name-field-id">Enter last name</label>
+            <input id="user-last-name-field-id" type="text" name="contactSecondName" formControlName="contactSecondName" placeholder="Goldman" tabindex="2">
+
+            <div class="alert alert-danger" *ngIf="contactForm.controls['contactSecondName'].invalid && contactForm.controls['contactSeconName'].touched">
+                Не указана фамилия
+            </div>
+        </div>
+
+    </fieldset>
+    <!--<fieldset>
+        <legend>Contact information</legend>
+        <div class="input-container">
+            <label for="user-phone-name-field-id">Enter phone</label>
+            <input id="user-phone-field-id" type="tel" placeholder="+7-186-152-98-78" tabindex="3">
+        </div>
+        <div class="input-container">
+            <label for="user-email-name-field-id">Enter e-mail</label>
+            <input id="user-email-field-id" type="email" placeholder="example@mail.com" tabindex="4">
+        </div>
+    </fieldset>-->
+    <button type="submit" class="btn" [disabled]="contactForm.invalid">Добавить</button>
+
+
+</form>
+
+
+
+<!--<form class="contacts-form" enctype="multipart/form-data" (ngSubmit)="createContact(); createForm.reset()" #createForm="ngForm">
+    <fieldset>
+        <legend>Main information</legend>
+        <div class="input-container">
+            <label for="user-first-name-field-id" reqi>Enter first name</label>
+            <input id="user-first-name-field-id" type="text" placeholder="John" autofocus required tabindex="1">
+        </div>
+        <div class="input-container">
+            <label for="user-last-name-field-id">Enter last name</label>
+            <input id="user-last-name-field-id" type="text" placeholder="Goldman" tabindex="2">
+        </div>
+
+    </fieldset>
+    <fieldset>
+        <legend>Contact information</legend>
+        <div class="input-container">
+            <label for="user-phone-name-field-id">Enter phone</label>
+            <input id="user-phone-field-id" type="tel" placeholder="+7-186-152-98-78" tabindex="3">
+        </div>
+        <div class="input-container">
+            <label for="user-email-name-field-id">Enter e-mail</label>
+            <input id="user-email-field-id" type="email" placeholder="example@mail.com" tabindex="4">
+        </div>
+    </fieldset>
+    <button type="submit" [disabled]="createForm.form.invalid">Добавить</button>
+
+
+</form>-->
+
+
+<!--
+
+<div class="input-container gender-container" #userFieldId>
+            <label>Chose gender</label>
+            <div class="gender" #userWomanFieldId>
+                <i class="material-icons">{{genderChecked==='woman' ?  'radio_button_checked' : 'radio_button_unchecked'}}</i>
+                <input id="user-gender-woman-field-id" type="radio" name="user-gender-field" value="woman">
+                <label for="user-gender-woman-field-id" (click)="genderChanged('woman')">Woman</label>
+            </div>
+            <div class="gender" #userManFieldId>
+                <i class="material-icons">{{genderChecked==='man' ?  'radio_button_checked' : 'radio_button_unchecked'}}</i>
+                <input id="user-gender-man-field-id" type="radio" name="user-gender-field" value="man">
+                <label for="user-gender-man-field-id" (click)="genderChanged('man')">Man</label>
+            </div>
+            <div class="gender">
+                <i class="material-icons">{{genderChecked==='any' ?  'radio_button_checked' : 'radio_button_unchecked'}}</i>
+                <input id="user-gender-any-field-id" type="radio" name="user-gender-field" value="any" checked>
+                <label for="user-gender-any-field-id" (click)="genderChanged('any')">Any</label>
+            </div>
+        </div>
+-->
+<!--<div class="input-container">
+                <span> У вас пока нет прав</span>
+                <button class="expand-more icon">-->
+<!--<button class="expand-more icon" (click)="hiddenFormToggle()">-->
+<!--            <i class="material-icons">{{hiddenForm ? 'expand_more' : 'expand_less' }}</i>
+                </button>
+            </div>-->
+<!--
+            <fieldset [class.hidden-fields]="!hiddenForm">
+                <legend>Additional Information</legend>
+                <div class="input-container">
+                    <label for="user-icon-field-id">Enter icon</label>
+                    <input id="user-icon-field-id" type="file" name="user-icon" tabindex="5">
+                </div>
+                <div class="input-container">
+                    <label for="user-birthday-field-id">Enter birthday</label>
+                    <input id="user-birthday-id" type="date" placeholder="yyyy-mm-dd" tabindex="6">
+                </div>
+                <div class="input-container">
+                    <label for="user-commetns-id">Enter e-mail</label>
+                    <textarea id="user-commetns-id" rows="10" cols="150" tabindex="7">Yours comments.</textarea>
+                </div>
+            </fieldset>
+            -->

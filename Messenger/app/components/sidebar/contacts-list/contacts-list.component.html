@@ -1,0 +1,6 @@
+<div class="contacts-list" *ngIf="contacts.length>=0">
+    <contact-item *ngFor="let contact of contacts" [contact]="contact" (checkContact)="checkContact($event)" (mailContact)="mailContact($event)" (phoneContact)="phoneContact($event)" (deleteContact)="deleteContact($event)">
+
+    </contact-item>
+
+</div>

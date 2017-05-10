@@ -1,0 +1,33 @@
+/* Panel functions */
+
+
+/*.panel-functions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    border-radius: 2px;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 10px;
+    padding-top: 0.5px;
+    padding-bottom: 5px;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+}*/
+
+
+/*.contacts-list {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    border-radius: 2px;
+    width: 100%;
+    margin-bottom: 1em;
+    background-color: white;
+}*/
