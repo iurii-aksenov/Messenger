@@ -12,9 +12,8 @@ CREATE FUNCTION [dbo].[Contact_GetContactIdByEmail]
 RETURNS INT
 AS
 BEGIN
-	RETURN 
-	(
-		(SELECT TOP(1) ContactId FROM Contact WHERE Email = @email)
-	)
+	DECLARE @contactId INT = (SELECT TOP(1) ContactId FROM Contact WHERE Email = @email);
+	RETURN (@contactId)
 END
 GO
+

@@ -22,11 +22,12 @@ RETURNS @contact TABLE(
 	[CreationDate] DATETIME,
 	[ModificationDate] DATETIME,
 	[Disable] BIT,
-	[NotRelevant] BIT)
+	[NotRelevant] BIT,
+	[RowVersion] BINARY)
 AS
 BEGIN
-	INSERT @contact 
-	SELECT TOP(1) * FROM [dbo].[Contact] WHERE Email = @email
+	INSERT INTO @contact 
+	SELECT TOP(1) * FROM [dbo].[Contact] WHERE Email = @email;
 	RETURN
 END
 GO

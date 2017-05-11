@@ -15,7 +15,6 @@ CREATE PROCEDURE [dbo].[Contact_UpdateContact]
     @email varchar(60),
     @phone varchar(15),
     @comment nvarchar(120),
-    @creationDate datetime,
     @disable bit,
     @notRelevant bit
 AS
@@ -29,7 +28,6 @@ BEGIN
 		  ,[Email] = @email
 		  ,[Phone] = @phone
 		  ,[Comment] = @comment
-		  ,[CreationDate] = @creationDate
 		  ,[ModificationDate] = getdate()
 		  ,[Disable] = @disable
 		  ,[NotRelevant] = @notRelevant
@@ -40,10 +38,12 @@ BEGIN
 	PRINT 
 		N'Updating contact is failed.' +
 		ERROR_MESSAGE()
+	SELECT -1 AS 'Updating contact is failed.'
 	RETURN -1
 	END
 
 	PRINT 'Updating contact is ok.' 
+	SELECT 0 AS 'Updating contact is ok.'
 	RETURN 0	
 END
 GO

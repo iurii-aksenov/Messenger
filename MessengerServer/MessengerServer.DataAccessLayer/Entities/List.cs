@@ -23,15 +23,15 @@ namespace MessengerServer.DataAccessLayer.EntityFramework
 
         [Required]
         [StringLength(250)]
-        public string Comment { get; set; }
+        public string Comment { get; set; } = "";
 
         public int CreatorId { get; set; }
 
-        public DateTime CreationDate { get; set; }
+        public DateTime CreationDate { get; set; } = DateTime.Now;
 
-        public DateTime ModificationDate { get; set; }
+        public DateTime ModificationDate { get; set; } = DateTime.Now;
 
-        public bool NotRelevant { get; set; }
+        public bool NotRelevant { get; set; } = false;
 
         [Column(TypeName = "timestamp")]
         [MaxLength(8)]

@@ -62,9 +62,9 @@ BEGIN
 	END
 
 	PRINT 
-			N'Inserting contact is ok.'
-		SELECT 1 AS 'Inserting contact is ok.'
-		RETURN 1
+		N'Inserting contact is ok.'
+	SELECT 0 AS 'Inserting contact is ok.'
+	RETURN 0
 END	
 GO
 

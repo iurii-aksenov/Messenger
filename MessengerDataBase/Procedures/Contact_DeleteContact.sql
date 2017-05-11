@@ -18,10 +18,12 @@ BEGIN
 		PRINT 
 			N'Deleting contact is failed.' +
 			ERROR_MESSAGE()
+		SELECT -1 AS 'Deleting contact is failed.'
 		RETURN -1
 	END
 
 	PRINT 'Deleting contact is ok'
+	SELECT 0 AS 'Deleting contact is ok'
 	RETURN 0;
 END
 GO

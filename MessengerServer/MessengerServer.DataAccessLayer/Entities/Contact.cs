@@ -31,17 +31,17 @@ namespace MessengerServer.DataAccessLayer.EntityFramework
 
         [Required]
         [StringLength(40)]
-        public string SecondName { get; set; }
+        public string SecondName { get; set; } = "";
 
         [Required]
         [StringLength(40)]
-        public string MiddleName { get; set; }
+        public string MiddleName { get; set; } = "";
 
         [Required]
         [StringLength(5)]
-        public string Sex { get; set; }
+        public string Sex { get; set; } = "ANY";
 
-        public DateTime? BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; } = null;
 
         [Required]
         [StringLength(60)]
@@ -49,19 +49,19 @@ namespace MessengerServer.DataAccessLayer.EntityFramework
 
         [Required]
         [StringLength(15)]
-        public string Phone { get; set; }
+        public string Phone { get; set; } = "";
 
         [Required]
         [StringLength(120)]
-        public string Comment { get; set; }
+        public string Comment { get; set; } = "";
 
-        public DateTime CreationDate { get; set; }
+        public DateTime CreationDate { get; set; } = DateTime.Now;
 
-        public DateTime ModificationDate { get; set; }
+        public DateTime ModificationDate { get; set; } = DateTime.Now;
 
-        public bool Disable { get; set; }
+        public bool Disable { get; set; } = false;
 
-        public bool NotRelevant { get; set; }
+        public bool NotRelevant { get; set; } = false;
 
         [Column(TypeName = "timestamp")]
         [MaxLength(8)]

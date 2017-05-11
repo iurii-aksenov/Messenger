@@ -9,7 +9,7 @@ namespace MessengerServer.DataAccessLayer.Interfaces
 {
     public interface IContactRepository : IRepository<Contact>
     {
-        Contact GetContactByEmail(string email);
+        Contact Get(string email);
         int GetContactIdByEmail(string email);
     }
 }
