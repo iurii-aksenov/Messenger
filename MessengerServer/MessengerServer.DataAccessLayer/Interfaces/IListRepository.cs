@@ -10,6 +10,7 @@ namespace MessengerServer.DataAccessLayer.Interfaces
     public interface IListRepository : IRepository<List>
     {
         List Get(string title, int creatorId);
+        int? GetListIdByTitleAndContactId(string title, int contactId);
         List<Contact> GetListOfFriendsByContactId(int contactId);
         List<int> GetListOfFriendsIdByContactId(int contactId);
         List<Contact> GetListOfSomeonesByTitleAndContactId(string title, int contactId);

@@ -57,7 +57,7 @@ namespace MessengerServer.DataAccessLayer.Repositories
             try
             {
                 SqlParameter listId = new SqlParameter("@listId", id);
-                var list =  db.Database.SqlQuery<List>("SELECT * FROM List_GetListByListId(@contactId)", listId).FirstOrDefault();
+                var list =  db.Database.SqlQuery<List>("SELECT * FROM List_GetListByListId(@listId)", listId).FirstOrDefault();
                 return (list);
             }
             catch (SqlException e)
@@ -78,7 +78,28 @@ namespace MessengerServer.DataAccessLayer.Repositories
             {
                 SqlParameter _title = new SqlParameter("@title", title);
                 SqlParameter _creatorId = new SqlParameter("@creatorId", creatorId);
-                var list =  db.Database.SqlQuery<List>("SELECT * FROM List_GetListIdByTitleAndCreatorId(@title, @creatorId)", _title, _creatorId).FirstOrDefault();
+                var list =  db.Database.SqlQuery<List>("SELECT * FROM List_GetListByTitleAndCreatorId(@title, @creatorId)", _title, _creatorId).FirstOrDefault();
+                return (list);
+            }
+            catch (SqlException e)
+            {
+                Console.Write("SqlException " + e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.Write(" " + e.Message);
+            }
+
+            return null;
+        }
+
+        public int? GetListIdByTitleAndContactId(string title, int creatorId)
+        {
+            try
+            {
+                SqlParameter _title = new SqlParameter("@title", title);
+                SqlParameter _creatorId = new SqlParameter("@creatorId", creatorId);
+                var list =  db.Database.SqlQuery<int>("SELECT [dbo].[List_GetListIdByTitleAndCreatorId](@title, @creatorId)", _title, _creatorId).FirstOrDefault();
                 return (list);
             }
             catch (SqlException e)
@@ -188,12 +209,10 @@ namespace MessengerServer.DataAccessLayer.Repositories
                 SqlParameter title = new SqlParameter("@title", item.Title);
                 SqlParameter comment = new SqlParameter("@comment", item.Comment);
                 SqlParameter creatorId = new SqlParameter("@creatorId", item.CreatorId);
-                SqlParameter creationDate = new SqlParameter("@creationDate", item.CreationDate);
-                SqlParameter modificationDate = new SqlParameter("@modificationDate", item.ModificationDate);
                 SqlParameter notRelevant = new SqlParameter("@notRelevant", item.NotRelevant);
 
-                db.Database.SqlQuery<int>("List_InsertList @listId, @title, @comment, @creatorId, @creationDate, @modificationDate, @notRelevant",
-                                                          listId, title, comment, creatorId, creationDate, modificationDate, notRelevant).FirstOrDefault();
+                db.Database.SqlQuery<int>("List_UpdateList @listId, @title, @comment, @creatorId, @notRelevant",
+                                                          listId, title, comment, creatorId, notRelevant).FirstOrDefault();
             }
             catch (SqlException e)
             {

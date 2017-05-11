@@ -17,9 +17,11 @@ BEGIN
 		PRINT 
 			N'Deleting list is failed.' +
 			ERROR_MESSAGE()
+		SELECT -1 AS 'Deleting list is failed.'
 		RETURN -1
 		END
 	PRINT 'Deleting list is ok.'
+	SELECT 0 AS 'Deleting list is ok.'
 	RETURN 0
 END
 GO

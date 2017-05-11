@@ -19,7 +19,7 @@ namespace MessengerServer.DataAccessLayer.Repositories
         }
 
         public void Create(Contact item)
-        {
+        { 
             try
             {
                 SqlParameter firstName = new SqlParameter("@firstName", item.FirstName);

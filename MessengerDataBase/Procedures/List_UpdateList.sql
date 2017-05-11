@@ -15,7 +15,6 @@ CREATE PROCEDURE [dbo].[List_UpdateList]
 	@title NVARCHAR(40),
 	@comment NVARCHAR(250),
     @creatorId INT,
-    @creationDate DATETIME,
     @notRelevant BIT
 AS
 BEGIN
@@ -23,7 +22,6 @@ BEGIN
 	SET [Title] = @title
       ,[Comment] = @comment
       ,[CreatorId] = @creatorId
-      ,[CreationDate] = @creationDate
       ,[ModificationDate] = getdate()
       ,[NotRelevant] = @notRelevant
 	WHERE ListId = @listId
@@ -33,9 +31,11 @@ BEGIN
 		PRINT 
 			N'Updating list is failed.' +
 			ERROR_MESSAGE()
+		SELECT -1 AS 'Updating list is failed.'
 		RETURN -1
 		END
 	PRINT 'Updating list is ok.'
+	SELECT 0 AS 'Updating list is failed.'
 	RETURN 0
 END
 GO

@@ -17,8 +17,12 @@ namespace MessengerServer.DataAccessLayer
             List list = new List();
             list.Title = "test1";
             list.CreatorId = 37;
-            lr.Create(list);
-        Console.W
+            list.ListId = 58;
+            //list.Title = "change";
+            //lr.Create(list);
+            lr.Update(list);
+            Console.WriteLine(lr.Get(58).Title);
+
         }
     }
 }
