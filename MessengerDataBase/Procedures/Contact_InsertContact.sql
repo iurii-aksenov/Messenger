@@ -57,11 +57,15 @@ BEGIN
 		PRINT 
 			N'Inserting contact is failed.' +
 			ERROR_MESSAGE()
+		SELECT -1 AS 'Inserting contact is failed.'
 		RETURN -1
 	END
 
-	DECLARE @insertedDialogId INT = SCOPE_IDENTITY();
-	SELECT @insertedDialogId AS DialogId;
-	RETURN @insertedDialogId;
+	PRINT 
+			N'Inserting contact is ok.'
+		SELECT 1 AS 'Inserting contact is ok.'
+		RETURN 1
 END	
 GO
+
+

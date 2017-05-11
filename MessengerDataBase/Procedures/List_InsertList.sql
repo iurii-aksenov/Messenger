@@ -38,13 +38,17 @@ BEGIN
 		PRINT 
 		N'Inserting list is failed.' +
 		ERROR_MESSAGE()
+		SELECT -1 AS 'Inserting list is failed.'
 		RETURN -1
+
 	END
 
 	PRINT 'Inserting list is ok.'
-	DECLARE @insertedListId INT;
-	SET @insertedListId =  SCOPE_IDENTITY();
-	SELECt @insertedListId AS LsitId;
-	RETURN @insertedListId;
+	--DECLARE @insertedListId INT;
+	--SET @insertedListId =  SCOPE_IDENTITY();
+	--SELECt @insertedListId AS LsitId;
+	--RETURN @insertedListId;
+	SELECT 1 AS 'Inserting list is ok.'
+	RETURN 1
 END
 GO
