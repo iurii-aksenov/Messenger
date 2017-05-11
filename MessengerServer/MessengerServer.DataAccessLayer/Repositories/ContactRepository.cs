@@ -63,7 +63,7 @@ namespace MessengerServer.DataAccessLayer.Repositories
             try
             {
                 SqlParameter contactId = new SqlParameter("@contactId", id);
-                var contact =  db.Database.SqlQuery<Contact>("SELECT * from Contact_GetContactByContactId(@contactId)", contactId).FirstOrDefault();
+                var contact =  db.Database.SqlQuery<Contact>("SELECT * FROM Contact_GetContactByContactId(@contactId)", contactId).FirstOrDefault();
                 return (contact);
             }
             catch (SqlException e)

@@ -5,7 +5,7 @@ GO
 -- Create date: 30.04.2017
 -- Description:	Get contact via ContactId
 -- =============================================
-alter FUNCTION [dbo].[Contact_GetContactByContactId]
+CREATE FUNCTION [dbo].[Contact_GetContactByContactId]
 (	
 	@contactId INT
 )
@@ -23,7 +23,7 @@ RETURNS @contact TABLE(
 	[ModificationDate] DATETIME,
 	[Disable] BIT,
 	[NotRelevant] BIT,
-	[RowVersion] Binary)
+	[RowVersion] BINARY)
 AS
 BEGIN
 	INSERT INTO @contact 
@@ -31,7 +31,5 @@ BEGIN
 	RETURN
 END
 GO
-
---([ContactId],[FirstName],[SecondName],[MiddleName],[Sex],[BirthDate],[Email],[Phone],[Comment],[CreationDate],[ModificationDate],[Disable],[NotRelevant],[RowVersion])
 
 

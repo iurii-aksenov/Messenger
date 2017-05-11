@@ -12,7 +12,7 @@ namespace MessengerServer.DataAccessLayer.Interfaces
         List Get(string title, int creatorId);
         List<Contact> GetListOfFriendsByContactId(int contactId);
         List<int> GetListOfFriendsIdByContactId(int contactId);
-        List<Contact> GetListOfSomeonesByTitleAndContactId(int contactId);
-        List<int> GetListOfSomeonesIdByTitleAndContactId(int contactId);
+        List<Contact> GetListOfSomeonesByTitleAndContactId(string title, int contactId);
+        List<int> GetListOfSomeonesIdByTitleAndContactId(string title, int contactId);
     }
 }

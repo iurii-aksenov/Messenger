@@ -10,6 +10,7 @@ namespace MessengerServer.DataAccessLayer.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IContactRepository Contacts { get; }
+        IListRepository Lists { get; }
         void Save();
     }
 }

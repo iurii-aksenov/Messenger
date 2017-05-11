@@ -22,7 +22,8 @@ RETURNS @friendsTable TABLE (
 	[CreationDate] DATETIME,
 	[ModificationDate] DATETIME,
 	[Disable] BIT,
-	[NotRelevant] BIT)
+	[NotRelevant] BIT,
+	[RowVersion] BINARY)
 AS
 BEGIN
 	DECLARE @listId INT  = (SELECT TOP(1) ListId FROM List WHERE CreatorId = @contactId AND Title='FRIENDS')
