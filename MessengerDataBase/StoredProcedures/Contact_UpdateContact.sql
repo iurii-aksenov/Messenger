@@ -7,16 +7,16 @@ GO
 -- =============================================
 CREATE PROCEDURE [dbo].[Contact_UpdateContact]
 	@contactId INT,
-	@firstName nvarchar(40),
-    @secondName nvarchar(40),
-    @middleName nvarchar(40),
-    @sex varchar(5),
-    @birthDate datetime,
-    @email varchar(60),
-    @phone varchar(15),
-    @comment nvarchar(120),
-    @disable bit,
-    @notRelevant bit
+	@firstName NVARCHAR(40),
+    @secondName NVARCHAR(40),
+    @middleName NVARCHAR(40),
+    @sex VARCHAR(5),
+    @birthDate DATETIME,
+    @email VARCHAR(60),
+    @phone VARCHAR(15),
+    @comment NVARCHAR(120),
+    @disable BIT,
+    @notRelevant BIT
 AS
 BEGIN
 	UPDATE [dbo].[Contact]
@@ -28,7 +28,7 @@ BEGIN
 		  ,[Email] = @email
 		  ,[Phone] = @phone
 		  ,[Comment] = @comment
-		  ,[ModificationDate] = getdate()
+		  ,[ModificationDate] = GETDATE()
 		  ,[Disable] = @disable
 		  ,[NotRelevant] = @notRelevant
 	 WHERE ContactId = @contactId

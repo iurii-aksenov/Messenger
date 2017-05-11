@@ -30,8 +30,18 @@ BEGIN
            ,@modificationDate
            ,@notRelevant)
 
-	DECLARE @insertedLsitContactId INT = SCOPE_IDENTITY();
-	SELECT @insertedLsitContactId AS LsitContactId;
-	RETURN @insertedLsitContactId;
+	IF (@@ERROR <> 0)
+	BEGIN
+		PRINT 
+			N'Inserting listContact is failed.' +
+			ERROR_MESSAGE()
+		SELECT -1 AS 'Inserting listContact is failed.'
+		RETURN -1
+	END
+
+	PRINT 
+		N'Inserting listContact is ok.'
+	SELECT 0 AS 'Inserting listContact is ok.'
+	RETURN 0
 END
 GO

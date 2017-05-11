@@ -9,26 +9,27 @@ CREATE PROCEDURE [dbo].[ListContact_UpdateListContact]
 	@listContactId INT,
 	@listId INT,
 	@contactId INT,
-	@creationDate DATETIME,
 	@notRelevant BIT
 AS
 BEGIN
 	UPDATE [dbo].[ListContact]
 	SET [ListId] = @listId
       ,[ContactId] = @contactId
-      ,[CreationDate] = @creationDate
-      ,[ModificationDate] = getdate()
+      ,[ModificationDate] = GETDATE()
       ,[NotRelevant] = @notRelevant
 	WHERE ListContactId = @listContactId
 
 	IF (@@ERROR <> 0)
-		BEGIN
-		PRINT 
-			N'Updating list contact is failed.' +
-			ERROR_MESSAGE()
-		RETURN -1
-		END
-	PRINT 'Updating list is ok.'
+	BEGIN
+	PRINT 
+		N'Updating ListContact is failed.' +
+		ERROR_MESSAGE()
+	SELECT -1 AS 'Updating ListContact is failed.'
+	RETURN -1
+	END
+
+	PRINT 'Updating ListContact is ok.' 
+	SELECT 0 AS 'Updating ListContact is ok.'
 	RETURN 0
 END
 GO

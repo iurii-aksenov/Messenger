@@ -44,11 +44,7 @@ BEGIN
 	END
 
 	PRINT 'Inserting list is ok.'
-	--DECLARE @insertedListId INT;
-	--SET @insertedListId =  SCOPE_IDENTITY();
-	--SELECt @insertedListId AS LsitId;
-	--RETURN @insertedListId;
-	SELECT 1 AS 'Inserting list is ok.'
-	RETURN 1
+	SELECT 0 AS 'Inserting list is ok.'
+	RETURN 0
 END
 GO
