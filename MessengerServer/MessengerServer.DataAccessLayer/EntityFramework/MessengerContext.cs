@@ -8,8 +8,8 @@ namespace MessengerServer.DataAccessLayer.EntityFramework
 
     public partial class MessengerContext : DbContext
     {
-        public MessengerContext()
-            : base("name=MessengerContext")
+        public MessengerContext(string connectionString)
+            : base(connectionString)
         {
         }
 

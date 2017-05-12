@@ -10,6 +10,13 @@ namespace MessengerServer.DataAccessLayer.Repositories
 {
     public class DialogMessageRepository : IDialogMessageRepository
     {
+        private MessengerContext db;
+
+        public DialogMessageRepository(MessengerContext context)
+        {
+            this.db = context;
+        }
+
         public void Create(DialogMessage item)
         {
             throw new NotImplementedException();

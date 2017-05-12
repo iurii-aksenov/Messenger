@@ -11,6 +11,7 @@ namespace MessengerServer.DataAccessLayer.Interfaces
     {
         IContactRepository Contacts { get; }
         IListRepository Lists { get; }
+        IListContactRepository ListContacts { get; }
         IDialogRepository Dialogs { get; }
         IDialogMessageRepository DialogMessages { get;}
         void Save();
