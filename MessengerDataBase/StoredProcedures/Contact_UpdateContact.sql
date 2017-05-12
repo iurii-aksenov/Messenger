@@ -14,7 +14,7 @@ CREATE PROCEDURE [dbo].[Contact_UpdateContact]
     @birthDate DATETIME,
     @email VARCHAR(60),
     @phone VARCHAR(15),
-    @comment NVARCHAR(120),
+	@password VARCHAR(15),
     @disable BIT,
     @notRelevant BIT
 AS
@@ -27,7 +27,7 @@ BEGIN
 		  ,[BirthDate] = @birthDate
 		  ,[Email] = @email
 		  ,[Phone] = @phone
-		  ,[Comment] = @comment
+		  ,[Password] = @password
 		  ,[ModificationDate] = GETDATE()
 		  ,[Disable] = @disable
 		  ,[NotRelevant] = @notRelevant

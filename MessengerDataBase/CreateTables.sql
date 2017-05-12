@@ -22,9 +22,9 @@ CREATE TABLE [dbo].[Contact] (
 	[MiddleName] NVARCHAR(40) NOT NULL DEFAULT(''),
 	[Sex] VARCHAR(5) NOT NULL DEFAULT('ANY'),
 	[BirthDate] DATETIME NULL DEFAULT(NULL),
-	[Email] VARCHAR(60) NOT NULL,
-	[Phone] VARCHAR(15) NOT NULL DEFAULT(''),
-	[Comment] NVARCHAR(120) NOT NULL DEFAULT(''),
+	[Email] VARCHAR(60) NOT NULL DEFAULT(''),
+	[Phone] VARCHAR(15) NOT NULL,
+	[Password] VARCHAR(15) NOT NULL,
 	[CreationDate] DATETIME NOT NULL DEFAULT(getdate()),
 	[ModificationDate] DATETIME NOT NULL DEFAULT(getdate()),
 	[Disable] BIT NOT NULL DEFAULt(0),
@@ -55,7 +55,7 @@ GO
 CREATE TABLE [dbo].[List] (
 	[ListId] INT IDENTITY (1,1),
 	[Title] NVARCHAR(40) NOT NULL,
-	[Comment] NVARCHAR(250) NOT NULL DEFAULT(''),
+	[Comment] NVARCHAR(100) NOT NULL DEFAULT(''),
 	[CreatorId] INT NOT NULL,
 	[CreationDate] DATETIME NOT NULL DEFAULT(getdate()),
 	[ModificationDate] DATETIME NOT NULL DEFAULT(getdate()),
@@ -195,7 +195,7 @@ GO
 --TABLE Contact
 
 ALTER TABLE  [dbo].[Contact] 
-	ADD CONSTRAINT DF_Contact_Email  UNIQUE (Email)
+	ADD CONSTRAINT DF_Contact_Phone  UNIQUE ([Phone])
 GO
 
 ----------------REFERENCIES IN TABLES----------------

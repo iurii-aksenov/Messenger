@@ -1,7 +1,7 @@
 USE MessengerDb
 GO
 -- =============================================
--- Author:		YURIY AKSENOV
+-- Author:		Yuriy Aksenov
 -- Create date: 07.05.2017
 -- Description:	Delete contact from Contact table be ContactId
 -- =============================================

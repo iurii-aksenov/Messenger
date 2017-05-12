@@ -22,9 +22,9 @@ CREATE TABLE [dbo].[Contact] (
 	[MiddleName] NVARCHAR(40) NOT NULL DEFAULT(''),
 	[Sex] VARCHAR(5) NOT NULL DEFAULT('ANY'),
 	[BirthDate] DATETIME NULL DEFAULT(NULL),
-	[Email] VARCHAR(60) NOT NULL,
-	[Phone] VARCHAR(15) NOT NULL DEFAULT(''),
-	[Comment] NVARCHAR(120) NOT NULL DEFAULT(''),
+	[Email] VARCHAR(60) NOT NULL DEFAULT(''),
+	[Phone] VARCHAR(15) NOT NULL,
+	[Password] VARCHAR(15) NOT NULL,
 	[CreationDate] DATETIME NOT NULL DEFAULT(getdate()),
 	[ModificationDate] DATETIME NOT NULL DEFAULT(getdate()),
 	[Disable] BIT NOT NULL DEFAULt(0),
@@ -55,7 +55,7 @@ GO
 CREATE TABLE [dbo].[List] (
 	[ListId] INT IDENTITY (1,1),
 	[Title] NVARCHAR(40) NOT NULL,
-	[Comment] NVARCHAR(250) NOT NULL DEFAULT(''),
+	[Comment] NVARCHAR(100) NOT NULL DEFAULT(''),
 	[CreatorId] INT NOT NULL,
 	[CreationDate] DATETIME NOT NULL DEFAULT(getdate()),
 	[ModificationDate] DATETIME NOT NULL DEFAULT(getdate()),
@@ -132,7 +132,7 @@ GO
 --TABLE ConversationParticipant
 
 CREATE TABLE [dbo].[ConversationParticipant] (
-	[ConversationParticipantId] INt IDENTITY(1,1),
+	[ConversationParticipantId] INT IDENTITY(1,1),
 	[ConversationId] INT NOT NULL,
 	[ParticipantId] INT NOT NULL,
 	[CreationDate] DATETIME NOT NULL DEFAULT(getdate()),
@@ -145,7 +145,7 @@ GO
 --TABLE ConversationMessage
 
 CREATE TABLE [dbo].[ConversationMessage] (
-	[ConversationMessageId] INT NOT NULL,
+	[ConversationMessageId] INT IDENTITY(1,1),
 	[AuthorId] INT NOT NULL,
 	[ConversationMessageTextId] INT NOt NULL,
 	[PreviousConversationMessageId] INT NOt NULL,
@@ -195,7 +195,7 @@ GO
 --TABLE Contact
 
 ALTER TABLE  [dbo].[Contact] 
-	ADD CONSTRAINT DF_Contact_Email  UNIQUE (Email)
+	ADD CONSTRAINT DF_Contact_Phone  UNIQUE ([Phone])
 GO
 
 ----------------REFERENCIES IN TABLES----------------
@@ -311,3 +311,139 @@ ALTER TABLE [dbo].[ConversationMessageReadState]
 	REFERENCES [dbo].[ConversationMessage] (ConversationMessageId)
 GO
 
+
+----------------------------------------------------------------
+--////////////////////////////////////////////////////////////--
+----------------------------------------------------------------
+
+----------------CREATE STORED PROCEDURES------------------------
+
+
+-----------------------CONTACT PART-----------------------------
+GO
+--PROCEDURE Insert Contact
+
+-- =============================================
+-- Author:		YURIY AKSENOV
+-- Create date: 14.04.2017
+-- Description:	Insert instance of contact into Contact table
+-- =============================================
+CREATE PROCEDURE [dbo].[Contact_InsertContact] 
+	(@firstName NVARCHAR(40),
+	@secondName NVARCHAR(40) = '',
+	@middleName NVARCHAR(40) = '',
+	@sex VARCHAR(5) = 'ANY',
+	@birthDate DATETIME = NULL,
+	@email VARCHAR(60) = '',
+	@phone VARCHAR(15),
+	@password VARCHAR(15),
+	@creationDate DATETIME = NULL,
+	@modificationDate DATETIME = NULL,
+	@disable BIT = 0,
+	@notRelevant BIT = 0
+	)
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	IF (@creationDate IS NULL) BEGIN SET @creationDate = getdate() END;
+	IF (@modificationDate IS NULL) BEGIN SET @modificationDate = getdate() END;
+
+
+	INSERT INTO [dbo].[Contact]
+           ([FirstName]
+           ,[SecondName]
+           ,[MiddleName]
+           ,[Sex]
+           ,[BirthDate]
+           ,[Email]
+           ,[Phone]
+           ,[Password]
+           ,[CreationDate]
+           ,[ModificationDate]
+           ,[Disable]
+           ,[NotRelevant])
+     VALUES
+           (@firstName
+           ,@secondName
+           ,@middleName
+           ,@sex
+           ,@birthDate
+           ,@email
+           ,@phone
+           ,@password
+           ,@creationDate
+           ,@modificationDate
+           ,@disable
+           ,@notRelevant)
+
+	DECLARE @insertedContactId INT  = SCOPE_IDENTITY()
+
+	IF (@@ERROR <> 0)
+	BEGIN
+		PRINT 
+			N'Inserting contact is failed.' +
+			ERROR_MESSAGE()
+		SELECT -1 AS 'Inserting contact is failed.';
+		RETURN -1;
+	END
+
+	PRINT 
+		N'Inserting contact is ok.'
+	SELECT @insertedContactId AS 'Inserting ContactId.';
+	RETURN @insertedContactId;
+END	
+GO
+
+--PROCEDURE Update Contact
+
+-- =============================================
+-- Author:		YURIY AKSENOV
+-- Create date: 07.05.2017
+-- Description:	Update contact in Contact table
+-- =============================================
+CREATE PROCEDURE [dbo].[Contact_UpdateContact]
+	@contactId INT,
+	@firstName NVARCHAR(40),
+    @secondName NVARCHAR(40),
+    @middleName NVARCHAR(40),
+    @sex VARCHAR(5),
+    @birthDate DATETIME,
+    @email VARCHAR(60),
+    @phone VARCHAR(15),
+	@password VARCHAR(15),
+    @disable BIT,
+    @notRelevant BIT
+AS
+BEGIN
+	UPDATE [dbo].[Contact]
+	   SET [FirstName] = @firstName
+		  ,[SecondName] = @secondName
+		  ,[MiddleName] = @middleName
+		  ,[Sex] = @sex
+		  ,[BirthDate] = @birthDate
+		  ,[Email] = @email
+		  ,[Phone] = @phone
+		  ,[Password] = @password
+		  ,[ModificationDate] = GETDATE()
+		  ,[Disable] = @disable
+		  ,[NotRelevant] = @notRelevant
+	 WHERE ContactId = @contactId
+
+	IF (@@ERROR <> 0)
+	BEGIN
+	PRINT 
+		N'Updating contact is failed.' +
+		ERROR_MESSAGE()
+	SELECT -1 AS 'Updating contact is failed.'
+	RETURN -1
+	END
+
+	PRINT 'Updating contact is ok.' 
+	SELECT 0 AS 'Updating contact is ok.'
+	RETURN 0	
+END
+GO
+
+--PROCEDURE Delete Contact

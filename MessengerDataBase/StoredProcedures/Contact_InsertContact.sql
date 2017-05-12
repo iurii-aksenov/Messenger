@@ -11,9 +11,9 @@ CREATE PROCEDURE [dbo].[Contact_InsertContact]
 	@middleName NVARCHAR(40) = '',
 	@sex VARCHAR(5) = 'ANY',
 	@birthDate DATETIME = NULL,
-	@email VARCHAR(60),
-	@phone VARCHAR(15) = '',
-	@comment NVARCHAR(120)='',
+	@email VARCHAR(60) = '',
+	@phone VARCHAR(15),
+	@password VARCHAR(15),
 	@creationDate DATETIME = NULL,
 	@modificationDate DATETIME = NULL,
 	@disable BIT = 0,
@@ -22,8 +22,11 @@ CREATE PROCEDURE [dbo].[Contact_InsertContact]
 AS
 BEGIN
 
-	IF (@creationDate IS NULL) BEGIN SET @creationDate = getdate() END
-	IF (@modificationDate IS NULL) BEGIN SET @modificationDate = getdate() END
+	SET NOCOUNT ON;
+
+	IF (@creationDate IS NULL) BEGIN SET @creationDate = getdate() END;
+	IF (@modificationDate IS NULL) BEGIN SET @modificationDate = getdate() END;
+
 
 	INSERT INTO [dbo].[Contact]
            ([FirstName]
@@ -33,7 +36,7 @@ BEGIN
            ,[BirthDate]
            ,[Email]
            ,[Phone]
-           ,[Comment]
+           ,[Password]
            ,[CreationDate]
            ,[ModificationDate]
            ,[Disable]
@@ -46,26 +49,26 @@ BEGIN
            ,@birthDate
            ,@email
            ,@phone
-           ,@comment
+           ,@password
            ,@creationDate
            ,@modificationDate
            ,@disable
            ,@notRelevant)
+
+	DECLARE @insertedContactId INT  = SCOPE_IDENTITY()
 
 	IF (@@ERROR <> 0)
 	BEGIN
 		PRINT 
 			N'Inserting contact is failed.' +
 			ERROR_MESSAGE()
-		SELECT -1 AS 'Inserting contact is failed.'
-		RETURN -1
+		SELECT -1 AS 'Inserting contact is failed.';
+		RETURN -1;
 	END
 
 	PRINT 
 		N'Inserting contact is ok.'
-	SELECT 0 AS 'Inserting contact is ok.'
-	RETURN 0
+	SELECT @insertedContactId AS 'Inserting ContactId.';
+	RETURN @insertedContactId;
 END	
 GO
-
-
