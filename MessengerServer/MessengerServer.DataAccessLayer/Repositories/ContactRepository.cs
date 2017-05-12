@@ -100,7 +100,6 @@ namespace MessengerServer.DataAccessLayer.Repositories
             //{
             //    Console.Write(" " + e.Message);
             //}
-
             //return null;
         }
 

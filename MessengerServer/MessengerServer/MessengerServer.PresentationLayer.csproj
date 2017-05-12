@@ -7,7 +7,7 @@
     <ProjectGuid>{0FA585AF-0EA0-4208-BC58-3B30143B2B91}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MessengerServer</RootNamespace>
+    <RootNamespace>MessengerServer.PresentationLayer</RootNamespace>
     <AssemblyName>MessengerServer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -152,6 +152,7 @@
     <Compile Include="MessengerDb\MessengerDbBisnessLogic\IDbBisnessLogic.cs" />
     <Compile Include="MessengerDb\MessengerDbBisnessLogic\MessengerDbBisnessLogic.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\PhoneViewModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
