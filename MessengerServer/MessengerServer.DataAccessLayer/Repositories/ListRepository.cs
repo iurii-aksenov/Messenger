@@ -18,58 +18,62 @@ namespace MessengerServer.DataAccessLayer.Repositories
             this.db = context;
         }
 
-        public void Create(List item)
+        public void Create(List list)
         {
-            try
-            {
-                SqlParameter title = new SqlParameter("@title", item.Title);
-                SqlParameter comment = new SqlParameter("@comment", item.Comment);
-                SqlParameter creatorId = new SqlParameter("@creatorId", item.CreatorId);
-                SqlParameter creationDate = new SqlParameter("@creationDate", item.CreationDate);
-                SqlParameter modificationDate = new SqlParameter("@modificationDate", item.ModificationDate);
-                SqlParameter notRelevant = new SqlParameter("@notRelevant", item.NotRelevant);
+            db.Lists.Add(list);
+            //try
+            //{
+            //    SqlParameter title = new SqlParameter("@title", item.Title);
+            //    SqlParameter comment = new SqlParameter("@comment", item.Comment);
+            //    SqlParameter creatorId = new SqlParameter("@creatorId", item.CreatorId);
+            //    SqlParameter creationDate = new SqlParameter("@creationDate", item.CreationDate);
+            //    SqlParameter modificationDate = new SqlParameter("@modificationDate", item.ModificationDate);
+            //    SqlParameter notRelevant = new SqlParameter("@notRelevant", item.NotRelevant);
 
-                db.Database.SqlQuery<int>("List_InsertList @title, @comment, @creatorId, @creationDate, @modificationDate, @notRelevant",
-                                                          title, comment, creatorId, creationDate, modificationDate, notRelevant).FirstOrDefault();
-            }
-            catch (SqlException e)
-            {
-                Console.Write("SqlException " + e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.Write(" " + e.Message);
-            }
+            //    db.Database.SqlQuery<int>("List_InsertList @title, @comment, @creatorId, @creationDate, @modificationDate, @notRelevant",
+            //                                              title, comment, creatorId, creationDate, modificationDate, notRelevant).FirstOrDefault();
+            //}
+            //catch (SqlException e)
+            //{
+            //    Console.Write("SqlException " + e.Message);
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.Write(" " + e.Message);
+            //}
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            List list = db.Lists.Find(id);
+            if (list != null)
+                db.Lists.Remove(list); ;
         }
 
         public IEnumerable<List> Find(Func<List, bool> predicate)
         {
-            throw new NotImplementedException();
+            return db.Lists.Where(predicate).ToList();
         }
 
         public List Get(int id)
         {
-            try
-            {
-                SqlParameter listId = new SqlParameter("@listId", id);
-                var list =  db.Database.SqlQuery<List>("SELECT * FROM List_GetListByListId(@listId)", listId).FirstOrDefault();
-                return (list);
-            }
-            catch (SqlException e)
-            {
-                Console.Write("SqlException " + e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.Write(" " + e.Message);
-            }
+            return db.Lists.Find(id);
+            //try
+            //{
+            //    SqlParameter listId = new SqlParameter("@listId", id);
+            //    var list =  db.Database.SqlQuery<List>("SELECT * FROM List_GetListByListId(@listId)", listId).FirstOrDefault();
+            //    return (list);
+            //}
+            //catch (SqlException e)
+            //{
+            //    Console.Write("SqlException " + e.Message);
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.Write(" " + e.Message);
+            //}
 
-            return null;
+            //return null;
         }
 
         public List Get(string title, int creatorId)
@@ -116,7 +120,7 @@ namespace MessengerServer.DataAccessLayer.Repositories
 
         public IEnumerable<List> GetAll()
         {
-            throw new NotImplementedException();
+            return db.Lists;
         }
 
         public List<Contact> GetListOfFriendsByContactId(int contactId)
@@ -201,27 +205,43 @@ namespace MessengerServer.DataAccessLayer.Repositories
             return null;
         }
 
-        public void Update(List item)
+        public void Update(List list)
         {
-            try
-            {
-                SqlParameter listId = new SqlParameter("@listId", item.ListId);
-                SqlParameter title = new SqlParameter("@title", item.Title);
-                SqlParameter comment = new SqlParameter("@comment", item.Comment);
-                SqlParameter creatorId = new SqlParameter("@creatorId", item.CreatorId);
-                SqlParameter notRelevant = new SqlParameter("@notRelevant", item.NotRelevant);
+            db.Entry(list).State = System.Data.Entity.EntityState.Modified;
+            //try
+            //{
+            //    SqlParameter listId = new SqlParameter("@listId", list.ListId);
+            //    SqlParameter title = new SqlParameter("@title", list.Title);
+            //    SqlParameter comment = new SqlParameter("@comment", list.Comment);
+            //    SqlParameter creatorId = new SqlParameter("@creatorId", list.CreatorId);
+            //    SqlParameter notRelevant = new SqlParameter("@notRelevant", list.NotRelevant);
 
-                db.Database.SqlQuery<int>("List_UpdateList @listId, @title, @comment, @creatorId, @notRelevant",
-                                                          listId, title, comment, creatorId, notRelevant).FirstOrDefault();
-            }
-            catch (SqlException e)
-            {
-                Console.Write("SqlException " + e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.Write(" " + e.Message);
-            }
+            //    db.Database.SqlQuery<int>("List_UpdateList @listId, @title, @comment, @creatorId, @notRelevant",
+            //                                              listId, title, comment, creatorId, notRelevant).FirstOrDefault();
+            //}
+            //catch (SqlException e)
+            //{
+            //    Console.Write("SqlException " + e.Message);
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.Write(" " + e.Message);
+            //}
+        }
+
+        public int? GetId(string title, int contactId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Contact> GetListOfContactsByContactId(int contactId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetListOfContactsIdByContactId(int contactId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

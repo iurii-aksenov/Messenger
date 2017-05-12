@@ -1,4 +1,5 @@
-﻿using MessengerServer.DataAccessLayer.Interfaces;
+﻿
+using MessengerServer.DataAccessLayer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,34 +18,41 @@ namespace MessengerServer.DataAccessLayer.Repositories
             this.db = context;
         }
 
-        public void Create(DialogMessage item)
+        public void Create(DialogMessage dialogMessage)
         {
-            throw new NotImplementedException();
+            db.DialogMessages.Add(dialogMessage);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            DialogMessage dialogMessage = db.DialogMessages.Find(id);
+            if (dialogMessage != null)
+                db.DialogMessages.Remove(dialogMessage);
         }
 
         public IEnumerable<DialogMessage> Find(Func<DialogMessage, bool> predicate)
         {
-            throw new NotImplementedException();
+            return db.DialogMessages.Where(predicate).ToList();
         }
 
         public DialogMessage Get(int id)
         {
-            throw new NotImplementedException();
+            return db.DialogMessages.Find(id);
         }
 
         public IEnumerable<DialogMessage> GetAll()
         {
+            return db.DialogMessages;
+        }
+
+        public string GetTextOfDialogMessage(int DialogMessageId)
+        {
             throw new NotImplementedException();
         }
 
-        public void Update(DialogMessage item)
+        public void Update(DialogMessage dialogMessage)
         {
-            throw new NotImplementedException();
+            db.Entry(dialogMessage).State = System.Data.Entity.EntityState.Modified;
         }
     }
 }

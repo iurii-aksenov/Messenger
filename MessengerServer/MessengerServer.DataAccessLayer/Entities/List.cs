@@ -22,7 +22,7 @@ namespace MessengerServer.DataAccessLayer.EntityFramework
         public string Title { get; set; }
 
         [Required]
-        [StringLength(250)]
+        [StringLength(100)]
         public string Comment { get; set; } = "";
 
         public int CreatorId { get; set; }

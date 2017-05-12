@@ -221,6 +221,7 @@ namespace MessengerServer.DataAccessLayer.EntityFramework
                 .HasMany(e => e.DialogMessage1)
                 .WithOptional(e => e.DialogMessage2)
                 .HasForeignKey(e => e.PreviousDialogMessageId);
+            
         }
     }
     public class DialogMessageTextConfiguration : EntityTypeConfiguration<DialogMessageText>

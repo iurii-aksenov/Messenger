@@ -14,6 +14,7 @@ namespace MessengerServer.DataAccessLayer.Repositories
         private ContactRepository contactRepository;
         private DialogRepository dialogRepository;
         private DialogMessageRepository dialogMessageRepository;
+        private DialogMessageTextRepository dialogMessageTextRepository;
         private ListRepository listRepository;
         private ListContactRepository listContactRepository;
         
@@ -50,6 +51,16 @@ namespace MessengerServer.DataAccessLayer.Repositories
                 if (dialogMessageRepository == null)
                     dialogMessageRepository = new DialogMessageRepository(db);
                 return dialogMessageRepository;
+            }
+        }
+
+        public IDialogMessageTextRepository DialogMessageTexts
+        {
+            get
+            {
+                if (dialogMessageTextRepository == null)
+                    dialogMessageTextRepository = new DialogMessageTextRepository(db);
+                return dialogMessageTextRepository;
             }
         }
 

@@ -17,29 +17,31 @@ namespace MessengerServer.DataAccessLayer.Repositories
             this.db = context;
         }
 
-        public void Create(Dialog item)
+        public void Create(Dialog dialog)
         {
-            throw new NotImplementedException();
+            db.Dialogs.Add(dialog);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Dialog dialog = db.Dialogs.Find(id);
+            if (dialog != null)
+                db.Dialogs.Remove(dialog);
         }
 
         public IEnumerable<Dialog> Find(Func<Dialog, bool> predicate)
         {
-            throw new NotImplementedException();
+            return db.Dialogs.Where(predicate).ToList();
         }
 
         public Dialog Get(int id)
         {
-            throw new NotImplementedException();
+            return db.Dialogs.Find(id);
         }
 
         public IEnumerable<Dialog> GetAll()
         {
-            throw new NotImplementedException();
+            return db.Dialogs;
         }
 
         public List<Dialog> GetDialogsOfContactId(int contactId)
@@ -47,9 +49,9 @@ namespace MessengerServer.DataAccessLayer.Repositories
             throw new NotImplementedException();
         }
 
-        public void Update(Dialog item)
+        public void Update(Dialog dialog)
         {
-            throw new NotImplementedException();
+            db.Entry(dialog).State = System.Data.Entity.EntityState.Modified;
         }
     }
 }

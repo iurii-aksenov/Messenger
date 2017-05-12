@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace MessengerServer.DataAccessLayer.Interfaces
 {
-    public interface IDialogMessageRepository : IRepository<DialogMessage>
+    public interface IDialogMessageTextRepository : IRepository<DialogMessageText>
     {
-        string GetTextOfDialogMessage(int DialogMessageId);
     }
 }

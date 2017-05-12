@@ -18,66 +18,70 @@ namespace MessengerServer.DataAccessLayer.Repositories
             this.db = context;
         }
 
-        public void Create(ListContact item)
+        public void Create(ListContact listContact)
         {
-            try
-            {
-                SqlParameter listId = new SqlParameter("@listId", item.ListId);
-                SqlParameter contactId = new SqlParameter("@contactId", item.ContactId);
-                SqlParameter creationDate = new SqlParameter("@creationDate", item.CreationDate);
-                SqlParameter modificationDate = new SqlParameter("@modificationDate", item.ModificationDate);
-                SqlParameter notRelevant = new SqlParameter("@notRelevant", item.NotRelevant);
+            db.ListContacts.Add(listContact);
+            //try
+            //{
+            //    SqlParameter listId = new SqlParameter("@listId", listContact.ListId);
+            //    SqlParameter contactId = new SqlParameter("@contactId", listContact.ContactId);
+            //    SqlParameter creationDate = new SqlParameter("@creationDate", listContact.CreationDate);
+            //    SqlParameter modificationDate = new SqlParameter("@modificationDate", listContact.ModificationDate);
+            //    SqlParameter notRelevant = new SqlParameter("@notRelevant", listContact.NotRelevant);
 
-                db.Database.SqlQuery<int>("ListContact_InsertListContact @listId, @contactId, @creationDate, @modificationDate, @notRelevant",
-                                                                         listId, contactId, creationDate, modificationDate, notRelevant).FirstOrDefault();
-            }
-            catch (SqlException e)
-            {
-                Console.Write("SqlException " + e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.Write(" " + e.Message);
-            }
+            //    db.Database.SqlQuery<int>("ListContact_InsertListContact @listId, @contactId, @creationDate, @modificationDate, @notRelevant",
+            //                                                             listId, contactId, creationDate, modificationDate, notRelevant).FirstOrDefault();
+            //}
+            //catch (SqlException e)
+            //{
+            //    Console.Write("SqlException " + e.Message);
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.Write(" " + e.Message);
+            //}
 
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            ListContact listContact = db.ListContacts.Find(id);
+            if (listContact != null)
+                db.ListContacts.Remove(listContact);
         }
 
         public IEnumerable<ListContact> Find(Func<ListContact, bool> predicate)
         {
-            throw new NotImplementedException();
+            return db.ListContacts.Where(predicate).ToList();
         }
 
         public ListContact Get(int id)
         {
-            try
-            {
-                SqlParameter listContactId = new SqlParameter("@listContactId", id);
-                var listContact =  db.Database.SqlQuery<ListContact>("SELECT * FROM ListContact_GetListContactByContactListId(@listContactId)", listContactId).FirstOrDefault();
-                return (listContact);
-            }
-            catch (SqlException e)
-            {
-                Console.Write("SqlException " + e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.Write(" " + e.Message);
-            }
+            return db.ListContacts.Find(id);
+            //try
+            //{
+            //    SqlParameter listContactId = new SqlParameter("@listContactId", id);
+            //    var listContact =  db.Database.SqlQuery<ListContact>("SELECT * FROM ListContact_GetListContactByContactListId(@listContactId)", listContactId).FirstOrDefault();
+            //    return (listContact);
+            //}
+            //catch (SqlException e)
+            //{
+            //    Console.Write("SqlException " + e.Message);
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.Write(" " + e.Message);
+            //}
 
-            return null;
+            //return null;
         }
 
         public IEnumerable<ListContact> GetAll()
         {
-            throw new NotImplementedException();
+            return db.ListContacts;
         }
 
-        public int? GetListContactIdByListIdAndContactId(int listId, int contactId)
+        public int? GetId(int listId, int contactId)
         {
             try
             {
@@ -120,26 +124,27 @@ namespace MessengerServer.DataAccessLayer.Repositories
             return -1;
         }
 
-        public void Update(ListContact item)
+        public void Update(ListContact listContact)
         {
-            try
-            {
-                SqlParameter listContactId = new SqlParameter("@listContactId", item.ListContactId);
-                SqlParameter listId = new SqlParameter("@listId", item.ListId);
-                SqlParameter contactId = new SqlParameter("@contactId", item.ContactId);
-                SqlParameter notRelevant = new SqlParameter("@notRelevant", item.NotRelevant);
+            db.Entry(listContact).State = System.Data.Entity.EntityState.Modified;
+            //try
+            //{
+            //    SqlParameter listContactId = new SqlParameter("@listContactId", listContact.ListContactId);
+            //    SqlParameter listId = new SqlParameter("@listId", listContact.ListId);
+            //    SqlParameter contactId = new SqlParameter("@contactId", listContact.ContactId);
+            //    SqlParameter notRelevant = new SqlParameter("@notRelevant", listContact.NotRelevant);
 
-                db.Database.SqlQuery<int>("ListContact_UpdateListContact @listContactId, @listId, @contactId, @notRelevant",
-                                                                         listContactId, listId, contactId, notRelevant).FirstOrDefault();
-            }
-            catch (SqlException e)
-            {
-                Console.Write("SqlException " + e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.Write(" " + e.Message);
-            }
+            //    db.Database.SqlQuery<int>("ListContact_UpdateListContact @listContactId, @listId, @contactId, @notRelevant",
+            //                                                             listContactId, listId, contactId, notRelevant).FirstOrDefault();
+            //}
+            //catch (SqlException e)
+            //{
+            //    Console.Write("SqlException " + e.Message);
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.Write(" " + e.Message);
+            //}
         }
     }
 }

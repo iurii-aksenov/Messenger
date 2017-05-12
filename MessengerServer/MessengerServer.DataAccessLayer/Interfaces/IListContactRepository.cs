@@ -9,7 +9,7 @@ namespace MessengerServer.DataAccessLayer.Interfaces
 {
     public interface IListContactRepository : IRepository<ListContact>
     {
-        int? GetListContactIdByListIdAndContactId(int listId, int ContactId);
+        int? GetId(int listId, int ContactId);
         int GetTheQuantityFriendsOfContact(int contactId);
     }
 }
