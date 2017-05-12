@@ -1,0 +1,44 @@
+USE [MessengerDb]
+GO
+SET IDENTITY_INSERT [dbo].[List] ON
+GO
+INSERT INTO [dbo].[List]
+([ListId],[Title],[CreatorId])VALUES
+ (1,  'CONTACTS', 1)
+,(2,  'CONTACTS', 2)
+,(3,  'CONTACTS', 3)
+,(4,  'CONTACTS', 4)
+,(5,  'CONTACTS', 5)
+,(6,  'CONTACTS', 6)
+,(7,  'CONTACTS', 7)
+,(8,  'CONTACTS', 8)
+,(9,  'CONTACTS', 9)
+,(10, 'CONTACTS', 10)
+,(11, 'CONTACTS', 11)
+,(12, 'CONTACTS', 12)
+,(13, 'CONTACTS', 13)
+,(14, 'CONTACTS', 14)
+,(15, 'CONTACTS', 15)
+,(16, 'CONTACTS', 16)
+,(17, 'CONTACTS', 17)
+,(18, 'CONTACTS', 18)
+,(19, 'CONTACTS', 19)
+,(20, 'CONTACTS', 20)
+,(21, 'CONTACTS', 21)
+,(22, 'CONTACTS', 22)
+,(23, 'CONTACTS', 23)
+,(24, 'CONTACTS', 24)
+,(25, 'CONTACTS', 25)
+,(26, 'CONTACTS', 26)
+,(27, 'CONTACTS', 27)
+,(28, 'CONTACTS', 28)
+,(29, 'CONTACTS', 29)
+,(30, 'CONTACTS', 30)
+,(31, 'CONTACTS', 31)
+,(32, 'CONTACTS', 32)
+,(33, 'CONTACTS', 33)
+,(34, 'CONTACTS', 34)
+GO
+SET IDENTITY_INSERT [dbo].[List] OFF
+GO
+
