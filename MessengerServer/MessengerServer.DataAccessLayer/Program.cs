@@ -13,15 +13,27 @@ namespace MessengerServer.DataAccessLayer
         static void Main(string[] args)
         {
 
-            ListRepository lr = new ListRepository(new EntityFramework.MessengerContext());
-            List list = new List();
-            list.Title = "test1";
-            list.CreatorId = 37;
-            list.ListId = 58;
+
+            //list.Title = "test1";
+            //list.CreatorId = 37;
+            //list.ListId = 58;
             //list.Title = "change";
-            //lr.Create(list);
-            lr.Update(list);
-            Console.WriteLine(lr.Get(58).Title);
+
+            ListContactRepository lcr = new ListContactRepository(new MessengerContext());
+            ListContact listContact = new ListContact();
+            listContact.ListId = 58;
+            listContact.ContactId = 43;
+            //lcr.Create(listContact);
+            //Console.WriteLine(lcr.GetListContactIdByListIdAndContactId(58,43));
+            //Console.WriteLine(lcr.GetTheQuantityFriendsOfContact(38));
+
+            ListRepository lc = new ListRepository(new MessengerContext());
+
+            foreach (var item in lc.GetListOfFriendsIdByContactId(37))
+            {
+                Console.WriteLine(item);
+            }
+            
 
         }
     }

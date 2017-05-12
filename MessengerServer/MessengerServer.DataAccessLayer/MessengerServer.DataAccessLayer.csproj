@@ -67,6 +67,7 @@
     <Compile Include="Entities\ListContact.cs" />
     <Compile Include="EntityFramework\MessengerContext.cs" />
     <Compile Include="Interfaces\IContactRepository.cs" />
+    <Compile Include="Interfaces\IDialogRepository.cs" />
     <Compile Include="Interfaces\IListContactRepository.cs" />
     <Compile Include="Interfaces\IListRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />

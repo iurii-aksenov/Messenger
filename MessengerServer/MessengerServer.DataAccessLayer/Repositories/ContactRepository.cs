@@ -103,7 +103,7 @@ namespace MessengerServer.DataAccessLayer.Repositories
             throw new NotImplementedException();
         }    
 
-        public int GetContactIdByEmail(string email)
+        public int? GetContactIdByEmail(string email)
         {
             try
             {
@@ -120,7 +120,7 @@ namespace MessengerServer.DataAccessLayer.Repositories
                 Console.Write(" " + e.Message);
             }
 
-            return -1;
+            return null;
 
         }
 

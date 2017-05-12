@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace MessengerServer.DataAccessLayer.Interfaces
 {
-    public interface IContactRepository : IRepository<Contact>
+    public interface IDialogRepository : IRepository<Dialog>
     {
-        Contact Get(string email);
-        int? GetContactIdByEmail(string email);
+        List<Dialog> GetDialogsOfContactId(int contactId);
     }
 }
