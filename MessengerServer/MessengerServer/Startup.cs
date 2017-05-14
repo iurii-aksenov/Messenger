@@ -43,6 +43,7 @@ namespace MessengerServer
             var httpConfig = new HttpConfiguration();
 
             httpConfig.MapHttpAttributeRoutes();
+            
             //это надо чтобы мы могли делать маршрутизацию в контроллерах
             //например у нас в контроллере есть атрибуты tasks и такде у методов есть атрибуты short long
 

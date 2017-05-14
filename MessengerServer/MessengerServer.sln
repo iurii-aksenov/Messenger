@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessengerServer.PresentationLayer", "MessengerServer\MessengerServer.PresentationLayer.csproj", "{0FA585AF-0EA0-4208-BC58-3B30143B2B91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NOTMessengerServer.PresentationLayer", "MessengerServer\NOTMessengerServer.PresentationLayer.csproj", "{0FA585AF-0EA0-4208-BC58-3B30143B2B91}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessengerServer.DataAccessLayer", "MessengerServer.DataAccessLayer\MessengerServer.DataAccessLayer.csproj", "{8FF993A5-A9B8-4102-9D5E-14E3428C2515}"
 EndProject

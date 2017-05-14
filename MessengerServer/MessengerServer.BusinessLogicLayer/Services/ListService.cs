@@ -23,7 +23,7 @@ namespace MessengerServer.BusinessLogicLayer.Services
 
         public void CreateListByAccount(ListDTO listDTO, AccountDTO accountDTO)
         {
-            Contact account = Database.Contacts.Get(accountDTO.ContactId);
+            Contact account = Database.Contacts.Get(accountDTO.AccountId);
             if (account == null)
                 throw new ValidationException("Аккаунт не найден", "");
 
@@ -40,7 +40,7 @@ namespace MessengerServer.BusinessLogicLayer.Services
 
         public void InsertContactsIntoListByAccount(IEnumerable<ContactDTO> contactsDTO, AccountDTO accountDTO)
         {
-            Contact account = Database.Contacts.Get(accountDTO.ContactId);
+            Contact account = Database.Contacts.Get(accountDTO.AccountId);
             if (account == null)
                 throw new ValidationException("Аккаунт не найден", "");
             List list = Database.Lists.Get(Database.Lists.Find(l=>((l.Title == "CONTACTS") && (l.CreatorId == account.ContactId))).FirstOrDefault().ListId);
@@ -64,7 +64,7 @@ namespace MessengerServer.BusinessLogicLayer.Services
 
         public IEnumerable<ContactDTO> GetContactsFromListByAccount(AccountDTO accountDTO)
         {
-            Contact account = Database.Contacts.Get(accountDTO.ContactId);
+            Contact account = Database.Contacts.Get(accountDTO.AccountId);
             if (account == null)
                 throw new ValidationException("Аккаунт не найден.","");
 
@@ -86,7 +86,7 @@ namespace MessengerServer.BusinessLogicLayer.Services
 
         public void DeleteContactsFromListByAccount(IEnumerable<ContactDTO> contactsDTO, AccountDTO accountDTO)
         {
-            Contact account = Database.Contacts.Get(accountDTO.ContactId);
+            Contact account = Database.Contacts.Get(accountDTO.AccountId);
             if (account == null)
                 throw new ValidationException("Аккаунт не найден.", "");
 
