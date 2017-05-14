@@ -42,7 +42,7 @@ namespace MessengerServer.PresentationLayer.App_Start
         private static IKernel CreateKernel()
         {
             // устанавливаем строку подключения
-            var modules = new INinjectModule[] { new ServiceModule("DefaultConnection") };
+            var modules = new INinjectModule[] { new ServiceModule("data source=DESKTOP-E43P3CL\\SQLEXPRESS;initial catalog=MessengerDb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework") };
             var kernel = new StandardKernel(modules);
             try
             {

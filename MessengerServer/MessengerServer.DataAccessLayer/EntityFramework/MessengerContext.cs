@@ -57,6 +57,10 @@ namespace MessengerServer.DataAccessLayer.EntityFramework
                 .IsUnicode(false);
 
             ToTable("Contact")
+                .Property(e => e.Password)
+                .IsUnicode(false);
+
+            ToTable("Contact")
                 .Property(e => e.Phone)
                 .IsUnicode(false);
 

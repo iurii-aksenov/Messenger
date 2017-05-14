@@ -1,4 +1,4 @@
-﻿using MessengerServer.MessengerDb.MessengerContext;
+﻿
 using Microsoft.AspNet.SignalR.Client;
 using Microsoft.Owin.Hosting;
 using Serilog;
