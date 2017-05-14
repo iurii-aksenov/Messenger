@@ -245,20 +245,6 @@
     <Compile Include="Hubs\EventHub.cs" />
     <Compile Include="Hubs\HubPipelineModules\ErrorHandlingPipelineModule.cs" />
     <Compile Include="Hubs\HubPipelineModules\LoggingPipelineModule.cs" />
-    <Compile Include="MessengerDb\MessengerContext\Contact.cs" />
-    <Compile Include="MessengerDb\MessengerContext\Conversation.cs" />
-    <Compile Include="MessengerDb\MessengerContext\ConversationMessage.cs" />
-    <Compile Include="MessengerDb\MessengerContext\ConversationMessageReadState.cs" />
-    <Compile Include="MessengerDb\MessengerContext\ConversationMessageText.cs" />
-    <Compile Include="MessengerDb\MessengerContext\ConversationParticipant.cs" />
-    <Compile Include="MessengerDb\MessengerContext\Dialog.cs" />
-    <Compile Include="MessengerDb\MessengerContext\DialogMessage.cs" />
-    <Compile Include="MessengerDb\MessengerContext\DialogMessageText.cs" />
-    <Compile Include="MessengerDb\MessengerContext\List.cs" />
-    <Compile Include="MessengerDb\MessengerContext\ListContact.cs" />
-    <Compile Include="MessengerDb\MessengerContext\MessengerDbContext.cs" />
-    <Compile Include="MessengerDb\MessengerDbBisnessLogic\IDbBisnessLogic.cs" />
-    <Compile Include="MessengerDb\MessengerDbBisnessLogic\MessengerDbBisnessLogic.cs" />
     <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
@@ -274,17 +260,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Scripts\jquery-3.1.1.min.map" />
-    <None Include="Scripts\jquery-3.1.1.slim.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.1.1.js" />
-    <Content Include="Scripts\jquery-3.1.1.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
-    <Content Include="Scripts\jquery.signalR-2.2.1.js" />
-    <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MessengerServer.BusinessLogicLayer\MessengerServer.BusinessLogicLayer.csproj">

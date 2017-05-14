@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessengerServer.DataAccessL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessengerServer.BusinessLogicLayer", "MessengerServer.BusinessLogicLayer\MessengerServer.BusinessLogicLayer.csproj", "{7026428A-7CE0-4301-A128-7714ED29F37C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessengerServer.PresentationLayer", "MessengerServer.PresentationLayer\MessengerServer.PresentationLayer.csproj", "{837349BC-CE38-44A7-89EA-D8D311EB5EE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7026428A-7CE0-4301-A128-7714ED29F37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7026428A-7CE0-4301-A128-7714ED29F37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7026428A-7CE0-4301-A128-7714ED29F37C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{837349BC-CE38-44A7-89EA-D8D311EB5EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{837349BC-CE38-44A7-89EA-D8D311EB5EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{837349BC-CE38-44A7-89EA-D8D311EB5EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{837349BC-CE38-44A7-89EA-D8D311EB5EE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
