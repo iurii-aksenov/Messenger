@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0FA585AF-0EA0-4208-BC58-3B30143B2B91}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MessengerServer.PresentationLayer</RootNamespace>
     <AssemblyName>MessengerServer</AssemblyName>
@@ -198,6 +198,7 @@
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Constants\ConstantsChat.cs" />
     <Compile Include="Controllers\ChatController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Hubs\EventHub.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="MessengerDb\MessengerContext\MessengerDbContext.cs" />
     <Compile Include="MessengerDb\MessengerDbBisnessLogic\IDbBisnessLogic.cs" />
     <Compile Include="MessengerDb\MessengerDbBisnessLogic\MessengerDbBisnessLogic.cs" />
+    <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\User.cs" />

@@ -52,6 +52,10 @@ namespace MessengerServer.DataAccessLayer.EntityFramework
         public string Phone { get; set; } = "";
 
         [Required]
+        [StringLength(15)]
+        public string Password { get; set; } = "";
+
+        [Required]
         [StringLength(120)]
         public string Comment { get; set; } = "";
 

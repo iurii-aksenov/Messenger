@@ -34,6 +34,7 @@ namespace MessengerServer.PresentationLayer.Util
         private void AddBindings()
         {
             kernel.Bind<IContactService>().To<ContactService>();
+            kernel.Bind<IListService>().To<ListService>();
         }
     }
 }

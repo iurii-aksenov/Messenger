@@ -21,16 +21,6 @@ namespace MessengerServer.BusinessLogicLayer.Services
             Database = uow;
         }
 
-        public void DeleteAccount(AccountDTO account)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            Database.Dispose();
-        }
-
         public AccountDTO GetAccount(int? id)
         {
             if (id == null)
@@ -39,7 +29,24 @@ namespace MessengerServer.BusinessLogicLayer.Services
             if (account == null)
                 throw new ValidationException("Аккаунт не найден", "");
 
-            Mapper.Initialize(cfg => cfg.CreateMap<Contact, AccountDTO>());
+            Mapper.Initialize(cfg => cfg.CreateMap<Contact, AccountDTO>().ForMember("AccountId",opt=>opt.MapFrom(src=>src.ContactId)));
+            return Mapper.Map<Contact, AccountDTO>(account);
+        }
+
+        public AccountDTO GetAccount(string phone, string password)
+        {
+            if (String.IsNullOrWhiteSpace(phone) )
+                throw new ValidationException("Не установлен телефон", "");
+
+            if (String.IsNullOrWhiteSpace(password))
+                throw new ValidationException("Не установлен пароль", "");
+
+
+            var account = Database.Contacts.Find(a=>a.Phone == phone && a.Password == password).FirstOrDefault();
+            if (account == null)
+                throw new ValidationException("Аккаунт не найден", "");
+
+            Mapper.Initialize(cfg => cfg.CreateMap<Contact, AccountDTO>().ForMember("AccountId", opt => opt.MapFrom(src => src.ContactId)));
             return Mapper.Map<Contact, AccountDTO>(account);
         }
 
@@ -51,13 +58,23 @@ namespace MessengerServer.BusinessLogicLayer.Services
             if (contact == null)
                 throw new ValidationException("Контакт не найден", "");
 
-            Mapper.Initialize(cfg => cfg.CreateMap<Contact, AContactDTO>());
+            Mapper.Initialize(cfg => cfg.CreateMap<Contact, ContactDTO>());
             return Mapper.Map<Contact, ContactDTO>(contact);
         }
 
         public void RegisterAccount(AccountDTO account)
         {
             throw new NotImplementedException();
+        }
+
+        public void DeleteAccount(AccountDTO account)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            Database.Dispose();
         }
     }
 }

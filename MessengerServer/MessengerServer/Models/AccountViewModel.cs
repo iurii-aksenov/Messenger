@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MessengerServer.BusinessLogicLayer.DataTransferObjects
+namespace MessengerServer.PresentationLayer.Models
 {
-    public class AccountDTO
+    public class AccountViewModel
     {
         public int AccountId { get; set; }
         public string FirstName { get; set; }

@@ -28,33 +28,27 @@ namespace MessengerServer
             //
             using (WebApp.Start<Startup>(url: baseAddress))
             {
-                // Let's wire up a SignalR client here to easily inspect what
-                //  calls are happening
-                //
-                //Теперь здесь создаем СигналР клиент чтобы легко определять происходящие вызовы
-                //
-                var hubConnection = new HubConnection(baseAddress);
-                IHubProxy eventHubProxy = hubConnection.CreateHubProxy("EventHub");
-                eventHubProxy.On<string, ChannelEvent>("OnEvent", (channel, ev) => Log.Information("Event received on {channel} channel - {@ev}", channel, ev));
-                hubConnection.Start().Wait();
+                //// Let's wire up a SignalR client here to easily inspect what
+                ////  calls are happening
+                ////
+                ////Теперь здесь создаем СигналР клиент чтобы легко определять происходящие вызовы
+                ////
+                //var hubConnection = new HubConnection(baseAddress);
+                //IHubProxy eventHubProxy = hubConnection.CreateHubProxy("EventHub");
+                //eventHubProxy.On<string, ChannelEvent>("OnEvent", (channel, ev) => Log.Information("Event received on {channel} channel - {@ev}", channel, ev));
+                //hubConnection.Start().Wait();
 
-                // Join the channel for task updates in our console window
-                //
-                //Присоединение к потоку для обновления задачи в консоли
-                //
-                eventHubProxy.Invoke("Subscribe", Constants.AdminChannel);
-                eventHubProxy.Invoke("Subscribe", Constants.TaskChannel);
+                //// Join the channel for task updates in our console window
+                ////
+                ////Присоединение к потоку для обновления задачи в консоли
+                ////
+                //eventHubProxy.Invoke("Subscribe", Constants.AdminChannel);
+                //eventHubProxy.Invoke("Subscribe", Constants.TaskChannel);
 
                 Console.WriteLine($"Server is running on {baseAddress}");
                 Console.WriteLine("Press <enter> to stop server");
 
-                using (MessengerDbContext db = new MessengerDbContext())
-                {
-                    foreach(Contact c in db.Contacts)
-                    {
-                        Console.WriteLine("{0}.{1} - {2}", c.ContactId, c.FirstName, c.Email);
-                    }
-                }
+                
 
                 Console.ReadLine();
             }
