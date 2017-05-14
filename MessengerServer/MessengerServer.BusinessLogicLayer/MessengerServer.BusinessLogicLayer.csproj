@@ -51,12 +51,14 @@
     <Compile Include="DataTransferObjects\AccountDTO.cs" />
     <Compile Include="DataTransferObjects\ContactDTO.cs" />
     <Compile Include="DataTransferObjects\DialogDTO.cs" />
+    <Compile Include="DataTransferObjects\ListDTO.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />
     <Compile Include="Interfaces\IContactService.cs" />
     <Compile Include="Interfaces\IListService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ContactService.cs" />
+    <Compile Include="Services\ListService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MessengerServer.DataAccessLayer\MessengerServer.DataAccessLayer.csproj">

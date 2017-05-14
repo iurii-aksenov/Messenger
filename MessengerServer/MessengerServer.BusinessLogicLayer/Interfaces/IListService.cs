@@ -9,11 +9,10 @@ namespace MessengerServer.BusinessLogicLayer.Interfaces
 {
     public interface IListService
     {
-        void CreateList(ListDTO listDTO);
-        void InsertContactsIntoList(IEnumerable<ContactDTO> contactsDTO);
-        IEnumerable<ContactDTO> GetContactsFromListByAccount(ContactDTO contactDTO, AccountDTO accountDTO);
-        void DeleteContactFromListByAccount(ContactDTO contactDTO);
-        void DeleteContactsFromListByAccount(List<ContactDTO> contactsDTO, AccountDTO);
+        void CreateListByAccount(ListDTO listDTO, AccountDTO accountDTO);
+        void InsertContactsIntoListByAccount(IEnumerable<ContactDTO> contactsDTO, AccountDTO accountDTO);
+        IEnumerable<ContactDTO> GetContactsFromListByAccount(AccountDTO accountDTO);
+        void DeleteContactsFromListByAccount(IEnumerable<ContactDTO> contactsDTO, AccountDTO accountDTO);
         void DeleteList(ListDTO listDTO);
     }
 }
