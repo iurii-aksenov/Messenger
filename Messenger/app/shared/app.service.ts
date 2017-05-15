@@ -26,20 +26,12 @@ export class AppService {
   }
 
   getAccount(id: number): Observable<Account> {
+    console.error("http://localhost:57282"+"/contacts/account/"+id);
     return this.http.get("http://localhost:57282"+"/contacts/account/"+id)
     .map((resp:Response)=>{
       let accountResp = resp.json() as Account;
-      console.log(accountResp);
-      let account = new Account(
-        accountResp.id,
-        accountResp.password,
-        accountResp.firstName,
-        accountResp.lastName,
-        accountResp.birthdate,
-        accountResp.sex,
-        accountResp.phone,
-        accountResp.email,
-        );
+      console.error(accountResp);
+      let account = accountResp;
       return account;
      });
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MiddleService } from "./../../shared/middle.service";
+import { Account } from "./../../shared/account.model";
 
 
 
@@ -11,18 +12,29 @@ import { MiddleService } from "./../../shared/middle.service";
 })
 export class MiddleComponent implements OnInit {
 
-    account: any = null;
+    account: Account;
 
-    constructor(private middleService: MiddleService) { }
+    constructor(private middleService: MiddleService) { 
+        this.account = null;
+    }
 
     ngOnInit() {
-        this.logIn(1);
+      
     }
 
     logIn(id: number) {
         this.middleService.getAccount(1)
             .subscribe((account) => {
-                    this.account = account;  
+                    this.account =  new Account(
+                                    account.id,
+                                    account.password,
+                                    account.firstName,
+                                    account.lastName,
+                                    account.birthdate,
+                                    account.sex,
+                                    account.phone,
+                                    account.email,
+                                    );
             }   
             )
     }
