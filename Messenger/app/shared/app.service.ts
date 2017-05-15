@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http'
 import { Response } from '@angular/http'
+import { Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 import { Contact } from "./contact.model";
+import { Account } from "./account.model";
 
 @Injectable()
 export class AppService {
@@ -20,6 +23,25 @@ export class AppService {
         return this.contacts = contacts;})
       .catch(this.handleError);
       
+  }
+
+  getAccount(id: number): Observable<Account> {
+    return this.http.get("http://localhost:57282"+"/contacts/account/"+id)
+    .map((resp:Response)=>{
+      let accountResp = resp.json() as Account;
+      console.log(accountResp);
+      let account = new Account(
+        accountResp.id,
+        accountResp.password,
+        accountResp.firstName,
+        accountResp.lastName,
+        accountResp.birthdate,
+        accountResp.sex,
+        accountResp.phone,
+        accountResp.email,
+        );
+      return account;
+     });
   }
 
   // getContacts(){

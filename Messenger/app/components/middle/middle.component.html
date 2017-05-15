@@ -1,1 +1,24 @@
-<contact-form></contact-form>
+<div class="contact-item">
+
+    <div class="personal-info">
+        <div class="personal-name">
+            <span class="lastname"> {{ account.lastName }}</span>
+            <span class="firstname">{{ account.firstName }}</span>
+            <span class="firstname">{{ account.birthdate}}</span>
+        </div>
+        <div class="personal-call">
+
+            <span class="phone">
+                <!--<i class="small-icon material-icons">email</i>-->
+                {{ account.email }}
+            </span>
+
+            <span class="phone">
+                <!--<i class="small-icon material-icons">phone</i>-->
+                {{ account.phone }}
+            </span>
+        </div>
+    </div>
+
+
+</div>

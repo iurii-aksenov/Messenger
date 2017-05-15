@@ -1,21 +1,25 @@
-export interface IContact {
+export interface IAccount {
     id: number;
     choosen: boolean;
     matched: boolean;
     firstName: string;
     lastName: string;
+    birthdate: Date;
     sex: string;
     phone: string;
+    password: string;
     email: string;
 }
 
-export class Contact implements IContact {
+export class Account implements IAccount {
     choosen: boolean = false;
     matched: boolean = true;
-    id: number
     constructor(
+        public id: number,
+        public password: string,
         public firstName: string = '',
         public lastName: string = '',
+        public birthdate: Date = null,
         public sex: string = 'any',
         public phone: string = '',
         public email: string = '') { }
