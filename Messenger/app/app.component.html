@@ -6,22 +6,50 @@
 <main>
 
     <article class="sidebar">
-        <sidebar></sidebar>
+        <sidebar *ngIf="logInCondition"></sidebar>
+
+
+        <form *ngIf="!logInCondition" class="contacts-form" enctype="multipart/form-data" [formGroup]="contactForm" novalidate (ngSubmit)="onCreateContact(); contactForm.reset()">
+
+            <div class="input-container form-group">
+                <label for="user-phone-field-id">Enter phone</label>
+                <input id="user-phone-field-id" type="phone" name="contactPhone" formControlName="contactPhone" placeholder="89001805100" autofocus tabindex="1">
+
+                <div class="alert alert-danger" *ngIf="contactForm.controls['contactPhone'].invalid && contactForm.controls['contactPhone'].touched">
+                    Не верно
+                </div>
+            </div>
+            <div class="input-container">
+                <label for="user-password-field-id">Enter password</label>
+                <input id="user-password-field-id" type="password" name="contactPassword" formControlName="contactPassword" placeholder="12345" tabindex="2">
+
+                <div class="alert alert-danger" *ngIf="contactForm.controls['contactPassword'].invalid && contactForm.controls['contactPassword'].touched">
+                    Не верно
+                </div>
+            </div>
+            <button type="submit" class="btn" [disabled]="contactForm.invalid">Log In</button>
+        </form>
+
+
+
         <div style="background-color:blue; position:absolute;  top: px; color:white;">
-            <ol>
+            <!--<ol>
                 <caption>Todo</caption>
                 <li>Надо чтобы при уменьшении поиск становился последним <br>flex и перходил на вторую строчку</li>
                 <li>Main service должен работать с дельта сервером и локал, <br>пока дельты нет, так как нет реального сервера </li>
                 <li>Надо чтобы до функционал в верхней панели не заезжал за рамку <br>браузера,. ато не не видно и чтобы z-index поиска был<br> меньще, и чтобы был директив для всех движений</li>
                 <li>!!! Важно мы не используем jQure а используем direcrive</li>
-            </ol>
+            </ol>-->
 
         </div>
     </article>
     <article>
         <middle></middle>
     </article>
-    <!--
+
+</main>
+
+<!--
     <article class="middle-part" [ngSwitch]="middlePartType">
         <template [ngSwitchCase]="1">
             
@@ -133,11 +161,11 @@
                 <!--<div class="input-container">
                 <span> У вас пока нет прав</span>
                 <button class="expand-more icon">-->
-    <!--<button class="expand-more icon" (click)="hiddenFormToggle()">-->
-    <!--            <i class="material-icons">{{hiddenForm ? 'expand_more' : 'expand_less' }}</i>
+<!--<button class="expand-more icon" (click)="hiddenFormToggle()">-->
+<!--            <i class="material-icons">{{hiddenForm ? 'expand_more' : 'expand_less' }}</i>
                 </button>
             </div>-->
-    <!--
+<!--
             <fieldset [class.hidden-fields]="!hiddenForm">
                 <legend>Additional Information</legend>
                 <div class="input-container">
@@ -154,7 +182,7 @@
                 </div>
             </fieldset>
             -->
-    <!--  </form>
+<!--  </form>
     </template>
     <template ngSwitchDefault>
             <section style="display:flex; flex-direction: column; justify-content:center;">
@@ -166,4 +194,3 @@
         </template>
     </article>
     -->
-</main>

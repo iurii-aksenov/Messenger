@@ -1,0 +1,71 @@
+<div class="contact-item" *ngIf="contact.matched" [class.checked]="contact.choosen">
+
+    <button class="btn checkbox icon" (click)="onCheckContact()">
+        <i class="material-icons">{{ contact.choosen ? 'check_box' : 'check_box_outline_blank'}}</i>
+    </button>
+
+    <div class="morehoriz-item">
+
+        <div class="btn morehoriz icon">
+            <label for="field-checkbox-additional-{{contact.id}}" class="material-icons">more_horiz</label>
+        </div>
+        <input type="checkbox" id="field-checkbox-additional-{{contact.id}}">
+        <div class="sub-panel">
+
+
+            <button class="sub-panel-item mail-sub-item" (click)="onMailContact()">
+                <span>Редактировать</span>
+                <div class="btn edit icon" >
+                    <i class="material-icons">edit</i>
+                </div>
+            </button>
+
+            <button class="sub-panel-item phone-sub-item" (click)="onPhoneContact()">
+                <span>Скопировать</span>
+                <div class="btn contentcopy icon" >
+                    <i class="material-icons">content_copy</i>
+                </div>
+            </button>
+
+            <button class="sub-panel-item delete-sub-item" (click)="onDeleteContact()">
+                <span>Удалить</span>
+                <div class="btn delete icon" >
+                    <i class="material-icons">delete</i>
+                </div>
+            </button>
+
+        </div>
+    </div>
+
+    <div class="personal-info">
+        <div class="personal-name">
+            <span class="lastname"> {{ contact.lastName }}</span>
+            <span class="firstname">{{ contact.firstName }}</span>
+        </div>
+        <div class="personal-call">
+
+            <span class="phone">
+                <!--<i class="small-icon material-icons">email</i>-->
+                {{ contact.email }}
+            </span>
+
+            <span class="phone">
+                <!--<i class="small-icon material-icons">phone</i>-->
+                {{ contact.phone }}
+            </span>
+        </div>
+    </div>
+
+
+
+
+    <div class="actions">
+        <button class="btn mail icon" (click)="onMailContact()">
+            <i class="material-icons">mail</i>
+        </button>
+        <button class="btn phone icon" (click)="onPhoneContact()">
+            <i class="material-icons">phone</i>
+        </button>
+    </div>
+
+</div>

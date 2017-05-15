@@ -1,0 +1,116 @@
+/* contacts list */
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    padding: 15px;
+    background-color: white;
+}
+
+.contact-item .checkbox {
+    margin-right: 5px;
+}
+
+.contact-item.checked {
+    background-color: lightgray;
+}
+
+.contact-item .actions {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: all .2s;
+}
+
+.contact-item:hover .actions {
+    opacity: 1;
+}
+
+.contact-item:hover {
+    background-color: ghostwhite;
+}
+
+
+/* sub-panel */
+
+.morehoriz-item {
+    position: absolute;
+    left: 1px;
+    top: -8px;
+}
+
+.morehoriz-item input[type="checkbox"] {
+    display: none;
+}
+
+.morehoriz-item input[type="checkbox"]:checked+.sub-panel {
+    display: flex;
+}
+
+.sub-panel {
+    position: absolute;
+    left: 30px;
+    top: 10px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    width: 210px;
+    background-color: white;
+    border: 3px solid #757575;
+    border-radius: 3px;
+    margin: 0;
+    padding: 0;
+    display: none;
+    /*visibility: hidden;*/
+}
+
+.sub-panel-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: 0 0;
+    border: none;
+    border-radius: 2px;
+    color: #757575;
+    margin: 0;
+    padding: 5px 10px;
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    will-change: box-shadow;
+    transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.sub-panel-item:hover {
+    background-color: rgba(158, 158, 158, .2);
+}
+
+.sub-panel-item:active {
+    background-color: rgba(158, 158, 158, .4);
+}
+
+.sub-panel-item span {
+    margin: 0;
+    padding: 0;
+}
+
+.sub-panel-item.delete-sub-item {
+    border-top: 1px solid #757575;
+}
+
+
+/*small icon*/
+
+.small-icon {
+    height: 5px;
+    width: 5px;
+    background-size: 5px 5px;
+}

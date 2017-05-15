@@ -9,55 +9,78 @@ export class InMemoryDataService implements InMemoryDbService {
 
         const contacts = [
             {
+
                 id: 1,
                 choosen: false,
                 matched: true,
-                firstName: "Иосиф",
-                lastName: "Попрыгун",
-                gender: "man",
-                phone: "72566898599",
-                email: "hello@mail.com"
+                firstName: "Оксана",
+                lastName: "Ежакова",
+                middleName: "Федоровна",
+                sex: "WOMAN",
+                phone: "89001805101",
+                email: "spell@yandex.ru",
+                password: "01"
 
             },
             {
                 id: 2,
                 choosen: false,
                 matched: true,
-                firstName: "Смурфик",
-                lastName: "Синеглазик",
-                gender: "man",
-                phone: "72566898599",
-                email: "hello@mail.com"
+                firstName: "Сергей",
+                lastName: "Поляков",
+                middleName: "Александрович",
+                sex: "MAN",
+                phone: "89001805102",
+                email: "curse@yandex.ru",
+                password: "02"
             },
             {
                 id: 3,
                 choosen: false,
                 matched: true,
-                firstName: "Бельчонок",
-                lastName: "Пушистик",
-                gender: "woman",
-                phone: "72566898599",
-                email: "hello@mail.com"
+                firstName: "Станислав",
+                lastName: "Конеев",
+                middleName: "Ларионович",
+                sex: "MAN",
+                phone: "89001805103",
+                email: "district@yandex.ru",
+                password: "03"
             },
             {
                 id: 4,
                 choosen: false,
                 matched: true,
-                firstName: "Шарик",
-                lastName: "Иподромов",
-                gender: "man",
-                phone: "72566898599",
-                email: "hello@mail.com"
+                firstName: "Андрей",
+                lastName: "Косицин",
+                middleName: "Валерьевич",
+                sex: "MAN",
+                phone: "89001805104",
+                email: "lady@yandex.ru",
+                password: "04"
             },
             {
                 id: 5,
                 choosen: false,
                 matched: true,
-                firstName: "Ариэль",
-                lastName: "Герц",
-                gender: "woman",
-                phone: "72566898599",
-                email: "hello@mail.com"
+                firstName: "Александр",
+                lastName: "Лисица",
+                middleName: "Робертович",
+                sex: "MAN",
+                phone: "89001805105",
+                email: "treat@yandex.ru",
+                password: "05"
+            },
+            {
+                id: 12,
+                choosen: false,
+                matched: true,
+                firstName: "Роман",
+                lastName: "Хрулиндиков",
+                middleName: "Гибадулович",
+                sex: "MAN",
+                phone: "89001805112",
+                email: "heel@yandex.ru",
+                password: "12"
             }
 
         ];
