@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace MessengerServer.BusinessLogicLayer.DataTransferObjects
+namespace MessengerServer.PresentationLayer.Models
 {
-    public class ListDTO
+    public class ListViewModel
     {
         public int ListId { get; set; }
         public DateTime ModificationDate { get; set; } = DateTime.Now;
         public bool NotRelevant { get; set; } = false;
 
-        public IEnumerable<ContactDTO> Contacts { get; set; }
+        public IEnumerable<ContactViewModel> Contacts { get; set; }
     }
 }

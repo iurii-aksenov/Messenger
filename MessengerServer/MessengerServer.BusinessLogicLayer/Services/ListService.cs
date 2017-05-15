@@ -27,7 +27,12 @@ namespace MessengerServer.BusinessLogicLayer.Services
             if (account == null)
                 throw new ValidationException("Аккаунт не найден", "");
 
-            List list = new List
+            List list = Database.Lists.Get(listDTO.ListId); ;
+
+            if (list != null)
+                throw new ValidationException("Список контактов уже существует", "");
+
+            list = new List
             {
                 Title="CONTACTS",
                 CreatorId = account.ContactId
@@ -62,9 +67,12 @@ namespace MessengerServer.BusinessLogicLayer.Services
         }
 
 
-        public IEnumerable<ContactDTO> GetContactsFromListByAccount(AccountDTO accountDTO)
+        public ListDTO GetListByAccount(int? accountId)
         {
-            Contact account = Database.Contacts.Get(accountDTO.AccountId);
+            if(accountId == null)
+                throw new ValidationException("Id контакта не установлен.", "");
+
+            Contact account = Database.Contacts.Get((int)accountId);
             if (account == null)
                 throw new ValidationException("Аккаунт не найден.","");
 
@@ -79,8 +87,20 @@ namespace MessengerServer.BusinessLogicLayer.Services
                 contacts.Add(Database.Contacts.Get(contactId));
             }
 
+            contacts.Add(new Contact { ContactId = 55, Phone = "888" });
+
             Mapper.Initialize(cfg => cfg.CreateMap<Contact, ContactDTO>());
-            return Mapper.Map<IEnumerable<Contact>, List<ContactDTO>>(contacts);
+            var contactsDTO = Mapper.Map<List<Contact>, IEnumerable<ContactDTO>>(contacts);
+
+            var listDTO = new ListDTO
+            {
+                ListId = list.ListId,
+                ModificationDate = list.ModificationDate,
+                NotRelevant = list.NotRelevant,
+                Contacts = contactsDTO
+            };
+            
+            return listDTO;
         }
 
 
@@ -116,7 +136,16 @@ namespace MessengerServer.BusinessLogicLayer.Services
             Database.Lists.Delete(list.ListId);
 
             Database.Save();
+        }
 
+        public void Dispose()
+        {
+            Database.Dispose();
+        }
+
+        public void DeleteList(AccountDTO accountDTO)
+        {
+            throw new NotImplementedException();
         }
     }
 }

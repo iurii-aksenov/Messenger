@@ -11,8 +11,10 @@ namespace MessengerServer.BusinessLogicLayer.Interfaces
     {
         void RegisterAccount(AccountDTO account);
         ContactDTO GetContact(int? id);
+        ContactDTO GetContact(string phone);
         AccountDTO GetAccount(int? id);
         AccountDTO GetAccount(string phone, string password);
+        void UpdateAccount(AccountDTO account);
         void DeleteAccount(AccountDTO account);
         void Dispose();
     }

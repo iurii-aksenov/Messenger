@@ -62,9 +62,31 @@ namespace MessengerServer.BusinessLogicLayer.Services
             return Mapper.Map<Contact, ContactDTO>(contact);
         }
 
+        public ContactDTO GetContact(string phone)
+        {
+            if (String.IsNullOrWhiteSpace(phone))
+                throw new ValidationException("Не установлен телефон контакта", "");
+            var contact = Database.Contacts.Find(c=>c.Phone == phone).FirstOrDefault();
+            if (contact == null)
+                throw new ValidationException("Контакт не найден", "");
+
+            Mapper.Initialize(cfg => cfg.CreateMap<Contact, ContactDTO>());
+            return Mapper.Map<Contact, ContactDTO>(contact);
+        }
+
         public void RegisterAccount(AccountDTO account)
         {
-            throw new NotImplementedException();
+            Mapper.Initialize(cfg => cfg.CreateMap<AccountDTO, Contact>());
+            Database.Contacts.Create(Mapper.Map<AccountDTO, Contact>(account));
+            Database.Save();
+        }
+
+        public void UpdateAccount(AccountDTO account)
+        {
+            if(Database.Contacts.Get(account.AccountId) == null)
+                throw new ValidationException("Аккаунт не найден", "");
+            Mapper.Initialize(cfg => cfg.CreateMap<AccountDTO, Contact>());
+            Database.Contacts.Update(Mapper.Map<AccountDTO, Contact>(account));
         }
 
         public void DeleteAccount(AccountDTO account)
@@ -76,5 +98,7 @@ namespace MessengerServer.BusinessLogicLayer.Services
         {
             Database.Dispose();
         }
+
+        
     }
 }

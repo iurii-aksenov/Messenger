@@ -1,4 +1,5 @@
 ﻿using MessengerServer.BusinessLogicLayer.DataTransferObjects;
+using MessengerServer.DataAccessLayer.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,11 @@ namespace MessengerServer.BusinessLogicLayer.Interfaces
     {
         void CreateListByAccount(ListDTO listDTO, AccountDTO accountDTO);
         void InsertContactsIntoListByAccount(IEnumerable<ContactDTO> contactsDTO, AccountDTO accountDTO);
-        IEnumerable<ContactDTO> GetContactsFromListByAccount(AccountDTO accountDTO);
+        //ListDTO GetListByAccount(AccountDTO accountDTO);
+        ListDTO GetListByAccount(int? accountId);
         void DeleteContactsFromListByAccount(IEnumerable<ContactDTO> contactsDTO, AccountDTO accountDTO);
         void DeleteList(ListDTO listDTO);
+        void DeleteList(AccountDTO accountDTO);
+        void Dispose();
     }
 }

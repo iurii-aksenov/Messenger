@@ -15,7 +15,7 @@ using System.Web.Mvc;
 
 namespace MessengerServer.PresentationLayer.Controllers
 {
-    [RoutePrefix("contact")]
+    [RoutePrefix("contacts")]
     public class ContactController : Controller
     {
         private IContactService contactService;
@@ -33,25 +33,25 @@ namespace MessengerServer.PresentationLayer.Controllers
             return Json("Long task complete", JsonRequestBehavior.AllowGet);
         }
 
-        [Route("account/{phone}/{password}")]
+        [Route("account/register/{account}")]
         [HttpGet]
-        public ActionResult GetAccount(string phone,string password)
+        public ActionResult RegisterAccount(AccountViewModel account)
         {
-            Console.WriteLine("Hello");
             try
             {
-                Console.WriteLine(phone + " " + password);
-                AccountDTO accountDTO = contactService.GetAccount(phone,password);
+                Mapper.Initialize(cfg => cfg.CreateMap<AccountViewModel, AccountDTO>());
+                var accountDTO = Mapper.Map<AccountViewModel, AccountDTO>(account);
+
+                contactService.RegisterAccount(accountDTO);
+
                 Mapper.Initialize(cfg => cfg.CreateMap<AccountDTO, AccountViewModel>());
-                var account = Mapper.Map<AccountDTO, AccountViewModel>(accountDTO);
-                
+                account = Mapper.Map<AccountDTO, AccountViewModel>(accountDTO);
+
                 return Json(account, JsonRequestBehavior.AllowGet);
             }
             catch (ValidationException ex)
             {
-                ModelState.AddModelError(ex.Property, ex.Message);
-                Console.WriteLine(ex.Message);
-                return Json("Hello", JsonRequestBehavior.AllowGet);
+                return Json("Exception: " + ex.Message + "\nPropery: " + ex.Property, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -59,10 +59,8 @@ namespace MessengerServer.PresentationLayer.Controllers
         [HttpGet]
         public ActionResult GetAccount(int? id)
         {
-            id = 1;
             try
             {
-                Console.WriteLine(id);
                 AccountDTO accountDTO = contactService.GetAccount(id);
                 Mapper.Initialize(cfg => cfg.CreateMap<AccountDTO, AccountViewModel>());
                 var account = Mapper.Map<AccountDTO, AccountViewModel>(accountDTO);
@@ -71,11 +69,99 @@ namespace MessengerServer.PresentationLayer.Controllers
             }
             catch (ValidationException ex)
             {
-                ModelState.AddModelError(ex.Property, ex.Message);
-                
-                return Json(ex.Message, JsonRequestBehavior.AllowGet);
+                return Json("Exception: " + ex.Message + "\nPropery: " + ex.Property, JsonRequestBehavior.AllowGet);
             }
         }
+
+        [Route("account/{phone}/{password}")]
+        [HttpGet]
+        public ActionResult GetAccount(string phone,string password)
+        {
+            try
+            {
+                AccountDTO accountDTO = contactService.GetAccount(phone,password);
+                Mapper.Initialize(cfg => cfg.CreateMap<AccountDTO, AccountViewModel>());
+                var account = Mapper.Map<AccountDTO, AccountViewModel>(accountDTO);
+                
+                return Json(account, JsonRequestBehavior.AllowGet);
+            }
+            catch (ValidationException ex)
+            {
+                return Json("Exception: " + ex.Message+ "\nPropery: " + ex.Property, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [Route("account/{phone}/{password}")]
+        [HttpPost]
+        public ActionResult UpdateAccount(AccountViewModel account)
+        {
+            try
+            {
+                Mapper.Initialize(cfg => cfg.CreateMap<AccountViewModel, AccountDTO>());
+                var accountDTO = Mapper.Map<AccountViewModel, AccountDTO>(account);
+
+                contactService.UpdateAccount(accountDTO);
+
+                return Json(account, JsonRequestBehavior.AllowGet);
+            }
+            catch (ValidationException ex)
+            {
+                return Json("Exception: " + ex.Message + "\nPropery: " + ex.Property, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+        [Route("contact/{id}")]
+        [HttpGet]
+        public ActionResult GetContact(int? id)
+        {
+            try
+            {
+                ContactDTO accountDTO = contactService.GetContact(id);
+                Mapper.Initialize(cfg => cfg.CreateMap<ContactDTO, ContactViewModel>());
+                var contact = Mapper.Map<ContactDTO, ContactViewModel>(accountDTO);
+
+                return Json(contact, JsonRequestBehavior.AllowGet);
+            }
+            catch (ValidationException ex)
+            {
+                return Json("Exception: " + ex.Message + "\nPropery: " + ex.Property, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [Route("contact/{phone}")]
+        [HttpGet]
+        public ActionResult GetContact(string phone)
+        {
+            try
+            {
+                ContactDTO contactDTO = contactService.GetContact(phone);
+                Mapper.Initialize(cfg => cfg.CreateMap<ContactDTO, ContactViewModel>());
+                var contact = Mapper.Map<ContactDTO, ContactViewModel>(contactDTO);
+
+                return Json(contact, JsonRequestBehavior.AllowGet);
+            }
+            catch (ValidationException ex)
+            {
+                return Json("Exception: " + ex.Message + "\nPropery: " + ex.Property, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+        /**
+         * 
+           try
+            {
+                
+
+                return Json(account, JsonRequestBehavior.AllowGet);
+            }
+            catch (ValidationException ex)
+            {
+                return Json("Exception: " + ex.Message + "\nPropery: " + ex.Property, JsonRequestBehavior.AllowGet);
+            }
+         * 
+         * */
 
         protected override void Dispose(bool disposing)
         {

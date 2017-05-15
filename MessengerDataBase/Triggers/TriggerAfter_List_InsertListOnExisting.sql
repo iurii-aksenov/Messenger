@@ -5,7 +5,7 @@ GO
 -- Create date: 08.05.2017
 -- Description:	Trigger for checking the inserting list on already existing.
 -- =============================================
-alter TRIGGER [dbo].[TriggerAfter_List_InsertListOnExisting]
+CREATE TRIGGER [dbo].[TriggerAfter_List_InsertListOnExisting]
     ON [dbo].[List] AFTER INSERT
 AS 
 BEGIN
