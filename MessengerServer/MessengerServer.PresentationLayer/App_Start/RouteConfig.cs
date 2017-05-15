@@ -15,6 +15,9 @@ namespace MessengerServer.PresentationLayer
 
             routes.MapMvcAttributeRoutes();
 
+            
+            
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

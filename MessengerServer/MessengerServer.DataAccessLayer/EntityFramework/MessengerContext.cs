@@ -48,6 +48,41 @@ namespace MessengerServer.DataAccessLayer.EntityFramework
     {
         public ContactConfiguration()
         {
+
+            ToTable("Contact")
+                .MapToStoredProcedures(b => b.Insert(sp => sp.HasName("Contact_InsertContact")
+                .Parameter(pm => pm.FirstName, "FirstName")
+                .Parameter(pm => pm.SecondName, "SecondName")
+                .Parameter(pm => pm.MiddleName, "MiddleName")
+                .Parameter(pm => pm.Sex, "Sex")
+                .Parameter(pm => pm.BirthDate, "BirthDate")
+                .Parameter(pm => pm.Email, "Email")
+                .Parameter(pm => pm.Phone, "Phone")
+                .Parameter(pm => pm.Password, "Password")
+                .Parameter(pm => pm.CreationDate, "CreationDate")
+                .Parameter(pm => pm.ModificationDate, "ModificationDate")
+                .Parameter(pm => pm.Disable, "Disable")
+                .Parameter(pm => pm.NotRelevant, "NotRelevant")
+                .Result(rs => rs.ContactId, "ContactId")));
+
+            ToTable("Contact")
+                .MapToStoredProcedures(b => b.Insert(sp => sp.HasName("Contact_UpdateContact")
+                .Parameter(pm => pm.FirstName, "FirstName")
+                .Parameter(pm => pm.SecondName, "SecondName")
+                .Parameter(pm => pm.MiddleName, "MiddleName")
+                .Parameter(pm => pm.Sex, "Sex")
+                .Parameter(pm => pm.BirthDate, "BirthDate")
+                .Parameter(pm => pm.Email, "Email")
+                .Parameter(pm => pm.Phone, "Phone")
+                .Parameter(pm => pm.Password, "Password")
+                .Parameter(pm => pm.Disable, "Disable")
+                .Parameter(pm => pm.NotRelevant, "NotRelevant")
+                .Parameter(rs => rs.ContactId, "ContactId")));
+
+            ToTable("Contact")
+                .MapToStoredProcedures(b => b.Insert(sp => sp.HasName("Contact_DeleteContact")
+                .Parameter(rs => rs.ContactId, "ContactId")));
+
             ToTable("Contact")
                .Property(e => e.Sex)
                .IsUnicode(false);
@@ -198,6 +233,28 @@ namespace MessengerServer.DataAccessLayer.EntityFramework
     {
         public DialogConfiguration()
         {
+            ToTable("Dialog")
+                .MapToStoredProcedures(b => b.Insert(sp => sp.HasName("Dialog_InsertContact")
+                .Parameter(pm => pm.OwnerId, "OwnerId")
+                .Parameter(pm => pm.InterlocutorId, "InterlocutorId")
+                .Parameter(pm => pm.LastDialogMessageId, "LastDialogMessageId")
+                .Parameter(pm => pm.CreationDate, "CreationDate")
+                .Parameter(pm => pm.ModificationDate, "ModificationDate")
+                .Parameter(pm => pm.NotRelevant, "NotRelevant")
+                .Result(rs => rs.DialogId, "DialogId")));
+
+            ToTable("Dialog")
+                .MapToStoredProcedures(b => b.Insert(sp => sp.HasName("Dialog_UpdateContact")
+                .Parameter(pm => pm.OwnerId, "OwnerId")
+                .Parameter(pm => pm.InterlocutorId, "InterlocutorId")
+                .Parameter(pm => pm.LastDialogMessageId, "LastDialogMessageId")
+                .Parameter(pm => pm.NotRelevant, "NotRelevant")
+                .Parameter(rs => rs.DialogId, "DialogId")));
+
+            ToTable("Dialog")
+                .MapToStoredProcedures(b => b.Insert(sp => sp.HasName("Dialog_DeleteContact")
+                .Parameter(rs => rs.DialogId, "DialogId")));
+
             ToTable("Dialog")
                 .Property(e => e.RowVersion)
                 .IsFixedLength();

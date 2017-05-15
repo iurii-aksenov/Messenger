@@ -33,7 +33,8 @@ import { Response } from '@angular/http';
 export class AppComponent {
 
 
-  
+
+  /*
     // deltaChanges: DeltaChangesItem[] = [new DeltaChangesItem(0, null, "none")];
     // // Это массви будет отправляться на сервер, такм образом при отправке на серер мы не гоняем туда сюда весь массив а передаем только изменения
 
@@ -175,5 +176,6 @@ export class AppComponent {
     // seeEditContact(): void {
 
     // }
+    */
 
 }

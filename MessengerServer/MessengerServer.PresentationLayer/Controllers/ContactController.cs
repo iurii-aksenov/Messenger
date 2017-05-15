@@ -15,6 +15,7 @@ using System.Web.Mvc;
 
 namespace MessengerServer.PresentationLayer.Controllers
 {
+    
     [RoutePrefix("contacts")]
     public class ContactController : Controller
     {
@@ -30,7 +31,7 @@ namespace MessengerServer.PresentationLayer.Controllers
         public ActionResult GetLongTask()
         {
 
-            return Json("Long task complete", JsonRequestBehavior.AllowGet);
+            return Json("Long task complete",JsonRequestBehavior.AllowGet);
         }
 
         [Route("account/register/{account}")]
