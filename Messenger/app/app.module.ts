@@ -18,7 +18,7 @@ import { PanelFunctionsComponent } from './components/sidebar/panel-functions/pa
 // import { SearchFunctionComponent } from './components/sidebar/search-function/search-function.component';
 import { ContactsListComponent } from './components/sidebar/contacts-list/contacts-list.component';
 import { ContactItemComponent } from './components/sidebar/contact-item/contact-item.component';
-import { ContactFormComponent } from './components/sidebar/contact-form/contact-form.component';
+import { ContactFormComponent } from './components/middle/contact-form/contact-form.component';
 
 /*
 *****************  Middle part of application ***************** 
@@ -33,7 +33,7 @@ import { MiddleService } from "./shared/services/middle.service";
 /*
 *****************  Other ***************** 
 */
-import { DisplayDirective } from './shared/display.directive';
+import { DisplayDirective } from './shared/directives/display.directive';
 import { FilterSearchPipe } from './filter-search.pipe';
 
 @NgModule({

@@ -26,7 +26,7 @@ export class MiddleComponent implements OnInit {
         this.middleService.getAccount(1)
             .subscribe((account) => {
                     this.account =  new Account(
-                                    account.id,
+                                    account.accountId,
                                     account.password,
                                     account.firstName,
                                     account.lastName,

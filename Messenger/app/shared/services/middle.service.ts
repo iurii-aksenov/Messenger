@@ -13,22 +13,20 @@ import { Account } from '../models/account.model';
 @Injectable()
 export class MiddleService {
 
-
-
     constructor(private appService: AppService) {
     }
 
     getContacts(): Observable<Contact[]> {
         return Observable.from<Contact[]>(
-                this.appService.getContacts()
-                    .map(contacts => {
-                        //this.contacts = contacts;
-                        //this.contactsSort();
-                        return contacts;
-                    }
+            this.appService.getContacts()
+                .map(contacts => {
+                    //this.contacts = contacts;
+                    //this.contactsSort();
+                    return contacts;
+                }
                 )
-            )
-        
+        )
+
     }
 
     getAccount(id: number): Observable<Account> {

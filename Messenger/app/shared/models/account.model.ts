@@ -1,5 +1,5 @@
 export interface IAccount {
-    contactId: number;
+    accountId: number;
     choosen: boolean;
     matched: boolean;
     firstName: string;
@@ -15,7 +15,7 @@ export class Account implements IAccount {
     choosen: boolean = false;
     matched: boolean = true;
     constructor(
-        public contactId: number,
+        public accountId: number,
         public password: string,
         public firstName: string = '',
         public lastName: string = '',
