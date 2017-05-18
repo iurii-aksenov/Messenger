@@ -36,6 +36,10 @@ export class SidebarService {
         //this.contacts = JSON.parse(localStorage.getItem("ContactsBook.contacts"));;
     }
 
+    addContact(){
+        this.contacts.push(new Contact('885','855','man','9876543210','123456789'));
+    }
+
 
     getContacts(): Observable<Contact[]> {
         return Observable.from<Contact[]>(
@@ -255,7 +259,9 @@ export class SidebarService {
     }
 
     updateList(){
-        this.appService.updateList();
+        this.contacts.forEach(element => {
+            console.log(element);
+        });
     }
 
 }
