@@ -4,8 +4,8 @@ import { Response } from '@angular/http'
 import { Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { Contact } from "./contact.model";
-import { Account } from "./account.model";
+import { Contact } from "../models/contact.model";
+import { Account } from "../models/account.model";
 
 @Injectable()
 export class AppService {

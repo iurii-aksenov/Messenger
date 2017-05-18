@@ -5,8 +5,8 @@
 import { Component, OnInit } from '@angular/core'
 
 
-import { IContact } from "../../../shared/contact.model";
-import { SidebarService } from "../../../shared/sidebar.service";
+import { IContact } from "../../../shared/models/contact.model";
+import { SidebarService } from "../../../shared/services/sidebar.service";
 
 
 @Component({

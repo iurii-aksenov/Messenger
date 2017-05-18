@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Response } from '@angular/http';
-import { AppService } from "./shared/app.service";
+import { AppService } from "./shared/services/app.service";
 import { EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 

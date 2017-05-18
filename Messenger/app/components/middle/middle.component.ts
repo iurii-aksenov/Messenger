@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MiddleService } from "./../../shared/middle.service";
-import { Account } from "./../../shared/account.model";
+import { MiddleService } from "./../../shared/services/middle.service";
+import { Account } from "./../../shared/models/account.model";
 
 
 

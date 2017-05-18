@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { MiddleService } from '../../../shared/middle.service';
-import { Contact } from '../../../shared/contact.model';
+import { MiddleService } from '../../../shared/services/middle.service';
+import { Contact } from '../../../shared/models/contact.model';
 
 @Component({
     moduleId: module.id,

@@ -7,8 +7,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
 
-import { Contact } from './contact.model';
-import { Account } from './account.model';
+import { Contact } from '../models/contact.model';
+import { Account } from '../models/account.model';
 
 @Injectable()
 export class MiddleService {

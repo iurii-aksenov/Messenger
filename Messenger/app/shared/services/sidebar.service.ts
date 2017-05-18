@@ -8,8 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
 
-import { IContact, Contact } from "./contact.model";
-import { contacts } from "./contact.data";
+import { IContact, Contact } from "../models/contact.model";
 
 
 import { AppService } from "./app.service";
@@ -37,7 +36,7 @@ export class SidebarService {
     }
 
     addContact(){
-        this.contacts.push(new Contact('885','855','man','9876543210','123456789'));
+        this.contacts.push(new Contact(5,'885','855','man','9876543210','123456789'));
     }
 
 

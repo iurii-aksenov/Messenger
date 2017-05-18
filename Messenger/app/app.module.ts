@@ -6,29 +6,30 @@ import { ReactiveFormsModule }   from '@angular/forms';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './shared/in-memory-data.service';
+import { InMemoryDataService } from './in-memory-data/in-memory-data.service';
 
 
 import { AppComponent } from './app.component';
 /*
-***************** Sidebar part od application ******************
+***************** Sidebar part of application ******************
 */
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PanelFunctionsComponent } from './components/sidebar/panel-functions/panel-functions.component';
 // import { SearchFunctionComponent } from './components/sidebar/search-function/search-function.component';
 import { ContactsListComponent } from './components/sidebar/contacts-list/contacts-list.component';
 import { ContactItemComponent } from './components/sidebar/contact-item/contact-item.component';
+import { ContactFormComponent } from './components/sidebar/contact-form/contact-form.component';
+
 /*
-*****************  Middle part od application ***************** 
+*****************  Middle part of application ***************** 
 */
 import { MiddleComponent } from './components/middle/middle.component';
-import { ContactFormComponent } from './components/middle/contact-form/contact-form.component';
 /*
 *****************  Services ***************** 
 */
-import { AppService } from './shared/app.service';
-import { SidebarService } from './shared/sidebar.service';
-import { MiddleService } from "./shared/middle.service";
+import { AppService } from './shared/services/app.service';
+import { SidebarService } from './shared/services/sidebar.service';
+import { MiddleService } from "./shared/services/middle.service";
 /*
 *****************  Other ***************** 
 */
