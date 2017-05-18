@@ -78,8 +78,8 @@ export class PanelFunctionsComponent implements OnInit {
         this.isLastNameSortedUp = true;
     }
 
-    onSortLastNameContactsUp() {
-        this.sidebarService.sortLastNameContactsUp(this.isLastNameSortedUp);
+    onSortSecondNameContactsUp() {
+        this.sidebarService.sortSecondNameContactsUp(this.isLastNameSortedUp);
         this.isLastNameSortedUp = !this.isLastNameSortedUp;
         this.isFirstNameSortedUp = true;
     }

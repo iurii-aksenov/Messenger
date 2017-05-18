@@ -20,16 +20,15 @@ export class MiddleService {
 
     getContacts(): Observable<Contact[]> {
         return Observable.from<Contact[]>(
-            Observable.fromPromise(
                 this.appService.getContacts()
-                    .then(contacts => {
+                    .map(contacts => {
                         //this.contacts = contacts;
                         //this.contactsSort();
                         return contacts;
                     }
-                    )
+                )
             )
-        );
+        
     }
 
     getAccount(id: number): Observable<Account> {

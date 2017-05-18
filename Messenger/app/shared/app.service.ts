@@ -15,14 +15,21 @@ export class AppService {
 
   constructor(private http: Http) { }
 
-  getContacts(): Promise<Contact[]> {
+  getContacts(): Observable<Contact[]> {
     return this.http.get(this.apiUrl)
-      .toPromise()
-      .then(res => res.json().data)
-      .then(contacts => { //console.log(contacts);  
-        return this.contacts = contacts;
-      })
-      .catch(this.handleError);
+      .map((res: Response) => {
+        let contactsList = res.json().data;
+        let contacts : Contact[] = [];
+        for(let index in contactsList)
+        {
+          console.log(contactsList[index]);
+          let contact = contactsList[index];
+          contacts.push(new Contact(contact.contactId, contact.firstName,  contact.secondName, contact.sex, contact.phone, contact.email));
+        }
+        this.contacts = contacts;  
+        return (contacts);
+    })
+ 
 
   }
 

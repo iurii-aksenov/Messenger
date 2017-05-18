@@ -10,11 +10,11 @@ export class InMemoryDataService implements InMemoryDbService {
         const contacts = [
             {
 
-                id: 1,
+                contactId: 1,
                 choosen: false,
                 matched: true,
                 firstName: "Оксана",
-                lastName: "Ежакова",
+                secondName: "Ежакова",
                 middleName: "Федоровна",
                 sex: "WOMAN",
                 phone: "89001805101",
@@ -23,11 +23,11 @@ export class InMemoryDataService implements InMemoryDbService {
 
             },
             {
-                id: 2,
+                contactId: 2,
                 choosen: false,
                 matched: true,
                 firstName: "Сергей",
-                lastName: "Поляков",
+                secondName: "Поляков",
                 middleName: "Александрович",
                 sex: "MAN",
                 phone: "89001805102",
@@ -35,11 +35,11 @@ export class InMemoryDataService implements InMemoryDbService {
                 password: "02"
             },
             {
-                id: 3,
+                contactId: 3,
                 choosen: false,
                 matched: true,
                 firstName: "Станислав",
-                lastName: "Конеев",
+                secondName: "Конеев",
                 middleName: "Ларионович",
                 sex: "MAN",
                 phone: "89001805103",
@@ -47,11 +47,11 @@ export class InMemoryDataService implements InMemoryDbService {
                 password: "03"
             },
             {
-                id: 4,
+                contactId: 4,
                 choosen: false,
                 matched: true,
                 firstName: "Андрей",
-                lastName: "Косицин",
+                secondName: "Косицин",
                 middleName: "Валерьевич",
                 sex: "MAN",
                 phone: "89001805104",
@@ -59,11 +59,11 @@ export class InMemoryDataService implements InMemoryDbService {
                 password: "04"
             },
             {
-                id: 5,
+                contactId: 5,
                 choosen: false,
                 matched: true,
                 firstName: "Александр",
-                lastName: "Лисица",
+                secondName: "Лисица",
                 middleName: "Робертович",
                 sex: "MAN",
                 phone: "89001805105",
@@ -71,11 +71,11 @@ export class InMemoryDataService implements InMemoryDbService {
                 password: "05"
             },
             {
-                id: 12,
+                contactId: 12,
                 choosen: false,
                 matched: true,
                 firstName: "Роман",
-                lastName: "Хрулиндиков",
+                secondName: "Хрулиндиков",
                 middleName: "Гибадулович",
                 sex: "MAN",
                 phone: "89001805112",

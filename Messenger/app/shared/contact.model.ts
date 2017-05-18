@@ -1,9 +1,9 @@
 export interface IContact {
-    id: number;
+    contactId: number;
     choosen: boolean;
     matched: boolean;
     firstName: string;
-    lastName: string;
+    secondName: string;
     sex: string;
     phone: string;
     email: string;
@@ -12,11 +12,11 @@ export interface IContact {
 export class Contact implements IContact {
     choosen: boolean = false;
     matched: boolean = true;
-    id: number
     constructor(
-        public firstName: string = '',
-        public lastName: string = '',
+        public contactId: number,
+        public firstName: string,
+        public secondName: string = '',
         public sex: string = 'any',
-        public phone: string = '',
+        public phone: string,
         public email: string = '') { }
 }

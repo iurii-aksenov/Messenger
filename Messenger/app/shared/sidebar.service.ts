@@ -39,14 +39,14 @@ export class SidebarService {
 
     getContacts(): Observable<Contact[]> {
         return Observable.from<Contact[]>(
-            Observable.fromPromise(
+       
                 this.appService.getContacts()
-                    .then(contacts => {
+                    .map(contacts => {
                         this.contacts = contacts;
                         this.contactsSort();
                         return contacts;
                     }
-                    )
+                    
             )
         );
     }
@@ -78,7 +78,7 @@ export class SidebarService {
         }
         if (
             (contact.firstName.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1) ||
-            (contact.lastName.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1) ||
+            (contact.secondName.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1) ||
             (contact.phone.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1)
         ) {
             if (!contact.matched) this.matchedCount++;
@@ -133,9 +133,9 @@ export class SidebarService {
     //если количество выбранный становится 0, то совйство все ли выбраны становится false
     //происходит выход их цикла, чтобы не проверять весь остальной массив.
     deleteContact(contact: IContact): void {
-        if (confirm("Do you want to delete " + contact.firstName + " " + contact.lastName + "?")) {
+        if (confirm("Do you want to delete " + contact.firstName + " " + contact.secondName+ "?")) {
             for (let i = 0; i < this.contacts.length; i++) {
-                if (this.contacts[i].id === contact.id) {
+                if (this.contacts[i].contactId === contact.contactId) {
                     this.deltaContactPush(this.contacts[i], "delete");
                     if (contact.choosen) {
                         this.checkCount--;
@@ -175,8 +175,8 @@ export class SidebarService {
         if (!firstNameSortedUp) {
             this.contacts.sort((a: IContact, b: IContact) => {
                 if (a.firstName === b.firstName) {
-                    if (a.lastName > b.lastName) return -1;
-                    if (a.lastName < b.lastName) return 1;
+                    if (a.secondName > b.secondName) return -1;
+                    if (a.secondName < b.secondName) return 1;
                 }
                 if (a.firstName > b.firstName) return -1;
                 if (a.firstName < b.firstName) return 1;
@@ -185,33 +185,33 @@ export class SidebarService {
         }
         this.contacts.sort((a: IContact, b: IContact) => {
             if (a.firstName === b.firstName) {
-                if (a.lastName > b.lastName) return 1;
-                if (a.lastName < b.lastName) return -1;
+                if (a.secondName > b.secondName) return 1;
+                if (a.secondName < b.secondName) return -1;
             }
             if (a.firstName > b.firstName) return 1;
             if (a.firstName < b.firstName) return -1;
         });
     }
 
-    sortLastNameContactsUp(lastNameSortedUp: boolean = true) {
-        if (!lastNameSortedUp) {
+    sortSecondNameContactsUp(secondNameSortedUp: boolean = true) {
+        if (!secondNameSortedUp) {
             this.contacts.sort((a: IContact, b: IContact) => {
-                if (a.lastName === b.lastName) {
+                if (a.secondName === b.secondName) {
                     if (a.firstName > b.firstName) return -1;
                     if (a.firstName < b.firstName) return 1;
                 }
-                if (a.lastName > b.lastName) return -1;
-                if (a.lastName < b.lastName) return 1;
+                if (a.secondName > b.secondName) return -1;
+                if (a.secondName < b.secondName) return 1;
             });
             return;
         }
         this.contacts.sort((a: IContact, b: IContact) => {
-            if (a.lastName === b.lastName) {
+            if (a.secondName === b.secondName) {
                 if (a.firstName > b.firstName) return 1;
                 if (a.firstName < b.firstName) return -1;
             }
-            if (a.lastName > b.lastName) return 1;
-            if (a.lastName < b.lastName) return -1;
+            if (a.secondName > b.secondName) return 1;
+            if (a.secondName < b.secondName) return -1;
         });
     }
 
@@ -245,12 +245,12 @@ export class SidebarService {
     //сортировка контактов сначала по фамилии потом по имени от А до Я
     contactsSort(): void {
         this.contacts.sort((a: IContact, b: IContact) => {
-            if (a.lastName === b.lastName) {
+            if (a.secondName === b.secondName) {
                 if (a.firstName > b.firstName) return 1;
                 if (a.firstName < b.firstName) return -1;
             }
-            if (a.lastName > b.lastName) return 1;
-            if (a.lastName < b.lastName) return -1;
+            if (a.secondName > b.secondName) return 1;
+            if (a.secondName < b.secondName) return -1;
         });
     }
 

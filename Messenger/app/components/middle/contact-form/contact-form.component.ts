@@ -21,14 +21,14 @@ export class ContactFormComponent {
         "contactEmail": new FormControl("")
     });
 
-    onCreateContact() {
-        this.middleService.createContact(new Contact(
-            this.contactForm.controls['contactFirstName'].value,
-            this.contactForm.controls['contactSecondName'].value,
-            this.contactForm.controls['contactPhone'].value,
-            this.contactForm.controls['contactEmail'].value))
-           .subscribe((data) => {console.log(data)});
-    }
+    // onCreateContact() {
+    //     this.middleService.createContact(new Contact(
+    //         this.contactForm.controls['contactFirstName'].value,
+    //         this.contactForm.controls['contactSecondName'].value,
+    //         this.contactForm.controls['contactPhone'].value,
+    //         this.contactForm.controls['contactEmail'].value))
+    //        .subscribe((data) => {console.log(data)});
+    // }
 
     contactNameValidator(control: FormControl): { [s: string]: boolean } {
         if (control.value === "нет") {
