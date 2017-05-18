@@ -20,22 +20,23 @@ export class AppService {
       .toPromise()
       .then(res => res.json().data)
       .then(contacts => { //console.log(contacts);  
-        return this.contacts = contacts;})
+        return this.contacts = contacts;
+      })
       .catch(this.handleError);
-      
+
   }
 
   getAccount(id: number): Observable<Account> {
-    console.log("http://localhost:57282"+"/contacts/account/"+id);
+    console.log("http://localhost:57282" + "/contacts/account/" + id);
     return this.http.get('http://localhost:57282/contacts/test/')
-    .map((resp:Response)=>{
-      console.log(resp);
-      let accountResp = resp.json();
-      console.log(accountResp);
-      let account = accountResp;
-      return account;
-     })
-     .catch((error: any) => {console.log(error); return Observable.throw(error);});
+      .map((resp: Response) => {
+        console.log(resp);
+        let accountResp = resp.json();
+        console.log(accountResp);
+        let account = accountResp;
+        return account;
+      })
+      .catch((error: any) => { console.log(error); return Observable.throw(error); });
   }
 
   // getContacts(){
@@ -74,10 +75,37 @@ export class AppService {
   //     .catch((error: any)=> {return Observable.throw(error)});
   // }
 
+  createContact(contact: Contact) {
 
+
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers });
+    const body = JSON.stringify(contact);
+
+    return this.http.post(this.apiUrl, body, options)
+      .map(res => {
+        res.json().data;
+        console.log(res);
+      })
+      .catch(this.handleError);
+
+
+  }
+
+  updateList(): Promise<Contact[]> {
+    return this.http.get(this.apiUrl)
+      .toPromise()
+      .then(res => res.json().data)
+      .then(contacts => { //console.log(contacts);  
+        return this.contacts = contacts;
+      })
+      .catch(this.handleError);
+  }
 
 
 }
+
+
 function supports_html5_storage() {
   try {
     return 'localStorage' in window && window['localStorage'] !== null;

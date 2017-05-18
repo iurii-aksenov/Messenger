@@ -234,7 +234,7 @@ namespace MessengerServer.DataAccessLayer.EntityFramework
         public DialogConfiguration()
         {
             ToTable("Dialog")
-                .MapToStoredProcedures(b => b.Insert(sp => sp.HasName("Dialog_InsertContact")
+                .MapToStoredProcedures(b => b.Insert(sp => sp.HasName("Dialog_InsertDialog")
                 .Parameter(pm => pm.OwnerId, "OwnerId")
                 .Parameter(pm => pm.InterlocutorId, "InterlocutorId")
                 .Parameter(pm => pm.LastDialogMessageId, "LastDialogMessageId")
@@ -244,7 +244,7 @@ namespace MessengerServer.DataAccessLayer.EntityFramework
                 .Result(rs => rs.DialogId, "DialogId")));
 
             ToTable("Dialog")
-                .MapToStoredProcedures(b => b.Insert(sp => sp.HasName("Dialog_UpdateContact")
+                .MapToStoredProcedures(b => b.Insert(sp => sp.HasName("Dialog_UpdateDialog")
                 .Parameter(pm => pm.OwnerId, "OwnerId")
                 .Parameter(pm => pm.InterlocutorId, "InterlocutorId")
                 .Parameter(pm => pm.LastDialogMessageId, "LastDialogMessageId")
@@ -252,7 +252,7 @@ namespace MessengerServer.DataAccessLayer.EntityFramework
                 .Parameter(rs => rs.DialogId, "DialogId")));
 
             ToTable("Dialog")
-                .MapToStoredProcedures(b => b.Insert(sp => sp.HasName("Dialog_DeleteContact")
+                .MapToStoredProcedures(b => b.Insert(sp => sp.HasName("Dialog_DeleteDialog")
                 .Parameter(rs => rs.DialogId, "DialogId")));
 
             ToTable("Dialog")
@@ -304,6 +304,30 @@ namespace MessengerServer.DataAccessLayer.EntityFramework
     {
         public ListConfiguration()
         {
+            ToTable("List")
+               .MapToStoredProcedures(b => b.Insert(sp => sp.HasName("List_InsertList")
+               .Parameter(pm => pm.Title, "Title")
+               .Parameter(pm => pm.Comment, "Comment")
+               .Parameter(pm => pm.CreatorId, "CreatorId")
+               .Parameter(pm => pm.CreationDate, "CreationDate")
+               .Parameter(pm => pm.ModificationDate, "ModificationDate")
+               .Parameter(pm => pm.NotRelevant, "NotRelevant")
+               .Result(rs => rs.ListId, "ListId")));
+
+            ToTable("List")
+               .MapToStoredProcedures(b => b.Insert(sp => sp.HasName("List_UpdateList")
+               .Parameter(pm => pm.Title, "Title")
+               .Parameter(pm => pm.Comment, "Comment")
+               .Parameter(pm => pm.CreatorId, "CreatorId")
+               .Parameter(pm => pm.CreationDate, "CreationDate")
+               .Parameter(pm => pm.ModificationDate, "ModificationDate")
+               .Parameter(pm => pm.NotRelevant, "NotRelevant")
+               .Parameter(rs => rs.ListId, "ListId")));
+
+            ToTable("List")
+               .MapToStoredProcedures(b => b.Insert(sp => sp.HasName("List_DeleteList")
+               .Parameter(rs => rs.ListId, "ListId")));
+
             ToTable("List")
                .Property(e => e.RowVersion)
                .IsFixedLength();

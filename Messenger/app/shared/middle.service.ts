@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { AppService } from "./app.service";
 import { Observable } from 'rxjs/Observable';
 //import 'rxjs/add/operator/fromPromise';
 // import 'rxjs/add/operator/catch';
 // import 'rxjs/add/observable/throw';
 import 'rxjs/Rx';
 
-import { AppService } from './app.service';
+
 import { Contact } from './contact.model';
 import { Account } from './account.model';
 
@@ -37,6 +38,9 @@ export class MiddleService {
                 .map(account => { return account; }));
     }
 
+    createContact(contact: Contact) {
+        return this.appService.createContact(contact);
 
+    }
 
 }

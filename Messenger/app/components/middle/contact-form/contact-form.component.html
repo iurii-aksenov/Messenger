@@ -18,6 +18,24 @@
             </div>
         </div>
 
+        <div class="input-container">
+            <label for="user-phone-field-id">Enter phone</label>
+            <input id="user-phone-field-id" type="text" name="contactPhone" formControlName="contactPhone" placeholder="89001805100" tabindex="3">
+
+            <div class="alert alert-danger" *ngIf="contactForm.controls['contactPhone'].invalid && contactForm.controls['contactPhone'].touched">
+                Не указан номер
+            </div>
+        </div>
+
+        <div class="input-container">
+            <label for="user-email-field-id">Enter last email</label>
+            <input id="user-email-field-id" type="text" name="contactEmail" formControlName="contactEmail" placeholder="sample@sample.com" tabindex="4">
+
+            <div class="alert alert-danger" *ngIf="contactForm.controls['contactEmail'].invalid && contactForm.controls['contactEmail'].touched">
+                Не указан email
+            </div>
+        </div>
+
     </fieldset>
     <!--<fieldset>
         <legend>Contact information</legend>

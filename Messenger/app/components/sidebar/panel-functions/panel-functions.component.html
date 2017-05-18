@@ -57,6 +57,12 @@
     </button>
 </div>
 
+<div class="function-item add-item">
+    <button class="btn add icon" (click)="updateList()">
+        <i class="material-icons">update</i>
+    </button>
+</div>
+
 <div class="function-item search-item">
     <form class="search-form">
         <input type="text" class="searching" name="search" [(ngModel)]="searchText" (ngModelChange)="onSearch()" placeholder="Search...">

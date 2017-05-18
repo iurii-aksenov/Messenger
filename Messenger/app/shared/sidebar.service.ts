@@ -254,4 +254,8 @@ export class SidebarService {
         });
     }
 
+    updateList(){
+        this.appService.updateList();
+    }
+
 }

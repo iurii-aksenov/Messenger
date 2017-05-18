@@ -42,6 +42,10 @@ export class PanelFunctionsComponent implements OnInit {
         this.sidebarService.search(this.searchText);
     }
 
+    updateList(){
+        this.sidebarService.updateList();
+    }
+
     onClose() {
         this.searchText = "";
         this.sidebarService.search(this.searchText);
