@@ -2,10 +2,10 @@ import { Injectable, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
-//import 'rxjs/add/operator/fromPromise';
-// import 'rxjs/add/operator/catch';
-// import 'rxjs/add/observable/throw';
-import 'rxjs/Rx';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+//import 'rxjs/Rx';
 
 
 import { IContact, Contact } from "../models/contact.model";
@@ -44,10 +44,11 @@ export class SidebarService {
     getContacts(): Observable<Contact[]> {
         return Observable.from<Contact[]>(
                 this.appService.getContacts()
-                    .map(contacts => {
+                    .map((contacts:Contact[]) => {
                         this.contacts = contacts;
-                        this.contactsSort();
-                        return contacts;
+                        console.log('from sidebar');
+                        console.log(contacts);
+                        return this.contacts;
                     }
                     
             )

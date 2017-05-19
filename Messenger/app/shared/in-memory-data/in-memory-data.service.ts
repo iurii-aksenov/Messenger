@@ -1,5 +1,4 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import 'rxjs/add/operator/toPromise';
 
 
 

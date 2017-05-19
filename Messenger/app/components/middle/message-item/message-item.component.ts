@@ -3,9 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IContact } from '../../../shared/models/contact.model';
 import { DisplayDirective } from '../../../shared/directives/display.directive';
 
-import { Observable } from 'rxjs/Observable';
 
-const Rx = require('rxjs/Rx');
 
 
 

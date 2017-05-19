@@ -4,14 +4,15 @@ import { AppService } from "./app.service";
 import { Observable } from 'rxjs/Observable';
 import { Subscription }   from 'rxjs/Subscription';
 import { Subject }   from 'rxjs/Subject';
-//import 'rxjs/add/operator/fromPromise';
-// import 'rxjs/add/operator/catch';
-// import 'rxjs/add/observable/throw';
-import 'rxjs/Rx';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/map';
+
 
 import { MiddleScreen } from "../models/middle-screen.enum";
 
-import { IContact } from "./../models/contact.model";
+import { Contact } from "./../models/contact.model";
 import { IAccount } from "./../models/account.model";
 
 @Injectable()
@@ -31,12 +32,12 @@ export class MiddleService{
         this.middleScreen.next(MiddleScreen.Greeting);
     }
 
-    addContact(contact : IContact){
+    addContact(contact : Contact){
         this.middleScreen.next(MiddleScreen.Greeting);
     }
 
-    getContacts(): Observable<IContact[]> {
-        return Observable.from<IContact[]>(
+    getContacts(): Observable<Contact[]> {
+        return Observable.from<Contact[]>(
             this.appService.getContacts()
                 .map(contacts => {
                     //this.contacts = contacts;

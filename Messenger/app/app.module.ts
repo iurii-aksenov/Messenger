@@ -6,7 +6,7 @@ import { ReactiveFormsModule }   from '@angular/forms';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data/in-memory-data.service';
+import { InMemoryDataService } from './shared/in-memory-data/in-memory-data.service';
 
 
 import { AppComponent } from './app.component';

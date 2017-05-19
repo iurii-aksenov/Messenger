@@ -17,7 +17,7 @@ import { IContact } from "./../models/contact.model";
 export class AppService {
 
   private apiUrl = 'api/contacts';
-  contacts: Contact[] = [];
+  contacts: IContact[] = [];
 
   private middleScreen = new Subject<MiddleScreen>();
   middleScreen$ = this.middleScreen.asObservable();
@@ -51,11 +51,12 @@ export class AppService {
     return this.http.get(this.apiUrl)
       .map((res: Response) => {
         let contactsList = res.json().data;
-        let contacts: Contact[] = [];
+        //let contacts: Contact[] = [];
+
         for (let index in contactsList) {
           console.log(contactsList[index]);
           let contact = contactsList[index];
-          contacts.push({
+          this.contacts.push({
             choosen: false,
             matched: false,
             contactId: contact.contactId, 
@@ -65,8 +66,11 @@ export class AppService {
             phone: contact.phone, 
             email: contact.email});
         }
-        this.contacts = contacts;
-        return (contacts);
+        
+
+        console.log('from app');
+        console.log(this.contacts);
+        return (this.contacts);
       })
 
 
@@ -101,14 +105,8 @@ export class AppService {
 
   
 
-  updateList(): Promise<Contact[]> {
-    return this.http.get(this.apiUrl)
-      .toPromise()
-      .then(res => res.json().data)
-      .then(contacts => { //console.log(contacts);  
-        return this.contacts = contacts;
-      })
-      .catch(this.handleError);
+  updateList() {
+    
   }
 
 
