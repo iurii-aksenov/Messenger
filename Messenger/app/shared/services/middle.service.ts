@@ -1,4 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
+
 import { AppService } from "./app.service";
 import { Observable } from 'rxjs/Observable';
 import { Subscription }   from 'rxjs/Subscription';
@@ -10,8 +11,8 @@ import 'rxjs/Rx';
 
 import { MiddleScreen } from "../models/middle-screen.enum";
 
-import { Contact } from '../models/contact.model';
-import { Account } from '../models/account.model';
+import { IContact } from "./../models/contact.model";
+import { IAccount } from "./../models/account.model";
 
 @Injectable()
 export class MiddleService{
@@ -30,8 +31,12 @@ export class MiddleService{
         this.middleScreen.next(MiddleScreen.Greeting);
     }
 
-    getContacts(): Observable<Contact[]> {
-        return Observable.from<Contact[]>(
+    addContact(contact : IContact){
+        this.middleScreen.next(MiddleScreen.Greeting);
+    }
+
+    getContacts(): Observable<IContact[]> {
+        return Observable.from<IContact[]>(
             this.appService.getContacts()
                 .map(contacts => {
                     //this.contacts = contacts;
@@ -43,7 +48,7 @@ export class MiddleService{
 
     }
 
-    getAccount(id: number): Observable<Account> {
+    getAccount(id: number): Observable<IAccount> {
         return Observable.from(
             this.appService.getAccount(id)
                 .map(account => { return account; }));

@@ -14,8 +14,8 @@ export interface IAccount {
 export class Account implements IAccount {
     choosen: boolean = false;
     matched: boolean = true;
+    accountId: number;
     constructor(
-        public accountId: number,
         public password: string,
         public firstName: string = '',
         public lastName: string = '',

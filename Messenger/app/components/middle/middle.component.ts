@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MiddleService } from "./../../shared/services/middle.service";
-import { Account } from "./../../shared/models/account.model";
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
 
 import { MiddleScreen } from "../../shared/models/middle-screen.enum";
-
+import { IContact } from "./../../shared/models/contact.model";
+import { Account } from "./../../shared/models/account.model";
+import { MiddleService } from "./../../shared/services/middle.service";
 
 
 @Component({
@@ -30,9 +30,16 @@ export class MiddleComponent implements OnInit, OnDestroy {
             this.middleScreen = middleScreeState == null ? MiddleScreen.Greeting : middleScreeState;
             console.log(middleScreeState);
         });
-
-
         this.account = null;
+    }
+
+    addContact(contact: IContact){
+        this.middleService.addContact(contact);
+
+    }
+
+    closeContact(close: boolean = false){
+        close ? this.middleService.closeAddingContact() : null;
     }
 
     ngOnInit() {
@@ -43,7 +50,6 @@ export class MiddleComponent implements OnInit, OnDestroy {
         this.middleService.getAccount(1)
             .subscribe((account) => {
                 this.account = new Account(
-                    account.accountId,
                     account.password,
                     account.firstName,
                     account.lastName,

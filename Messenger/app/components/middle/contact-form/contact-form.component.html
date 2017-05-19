@@ -1,6 +1,6 @@
-<form class="contacts-form" enctype="multipart/form-data" [formGroup]="contactForm" novalidate (ngSubmit)="onCreateContact(); contactForm.reset()">
+<form class="contacts-form" enctype="multipart/form-data" [formGroup]="contactForm" novalidate (ngSubmit)="onAddContact(); contactForm.reset()">
 
-    <button class="btn close icon" (click)="onCloseAddingContact()">
+    <button class="btn close icon" (click)="onCloseAddContact()">
         <i class="material-icons">close</i>
     </button>
 
@@ -15,7 +15,7 @@
                 Не указано имя
             </div>
         </div>
-        <div class="input-container">
+        <div class="input-container form-group">
             <label for="user-last-name-field-id">Enter last name</label>
             <input id="user-last-name-field-id" type="text" name="contactSecondName" formControlName="contactSecondName" placeholder="Goldman" tabindex="2">
 
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div class="input-container">
+        <div class="input-container form-group">
             <label for="user-phone-field-id">Enter phone</label>
             <input id="user-phone-field-id" type="text" name="contactPhone" formControlName="contactPhone" placeholder="89001805100" tabindex="3">
 
@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="input-container">
+        <div class="input-container form-group">
             <label for="user-email-field-id">Enter last email</label>
             <input id="user-email-field-id" type="text" name="contactEmail" formControlName="contactEmail" placeholder="sample@sample.com" tabindex="4">
 
@@ -43,19 +43,9 @@
         </div>
 
     </fieldset>
-    <!--<fieldset>
-        <legend>Contact information</legend>
-        <div class="input-container">
-            <label for="user-phone-name-field-id">Enter phone</label>
-            <input id="user-phone-field-id" type="tel" placeholder="+7-186-152-98-78" tabindex="3">
-        </div>
-        <div class="input-container">
-            <label for="user-email-name-field-id">Enter e-mail</label>
-            <input id="user-email-field-id" type="email" placeholder="example@mail.com" tabindex="4">
-        </div>
-    </fieldset>-->
-    <button type="submit" class="btn" [disabled]="contactForm.invalid">Добавить</button>
-
+    <div class="form-group">
+        <button type="submit" class="btn" [disabled]="contactForm.invalid">Добавить</button>
+    </div>
 
 </form>
 

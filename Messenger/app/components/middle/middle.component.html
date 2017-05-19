@@ -1,7 +1,7 @@
 <div *ngIf="middleScreen == 0">
     <span>Hello World</span>
 </div>
-<contact-form *ngIf="middleScreen == 2"></contact-form>
+<contact-form *ngIf="middleScreen == 2" (add)="addContact($event)"></contact-form>
 
 
 <!--<div class="function-item undo-item">

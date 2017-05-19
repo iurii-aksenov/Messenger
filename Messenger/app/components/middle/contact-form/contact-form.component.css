@@ -11,6 +11,10 @@ input.ng-touched.ng-valid {
 }
 
 .btn.close {
-    right: -210px;
+    right: 20px;
     position: absolute;
+}
+
+.contacts-form {
+    position: relative;
 }

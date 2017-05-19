@@ -12,8 +12,8 @@ export interface IContact {
 export class Contact implements IContact {
     choosen: boolean = false;
     matched: boolean = true;
+    contactId: number;
     constructor(
-        public contactId: number,
         public firstName: string,
         public secondName: string = '',
         public sex: string = 'any',

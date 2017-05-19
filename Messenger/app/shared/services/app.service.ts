@@ -9,6 +9,7 @@ import { Subject } from 'rxjs/Subject';
 import { MiddleScreen } from "../models/middle-screen.enum";
 import { Contact } from "../models/contact.model";
 import { Account } from "../models/account.model";
+import { IContact } from "./../models/contact.model";
 
 
 
@@ -30,11 +31,11 @@ export class AppService {
     console.log(this.middleScreen);
   }
 
-  createContact() {
+  addContact(contact : IContact) {
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers });
-    const body = 5;//= JSON.stringify(contact);
+    const body = JSON.stringify(contact);
 
     return this.http.post(this.apiUrl, body, options)
       .map(res => {
@@ -54,7 +55,15 @@ export class AppService {
         for (let index in contactsList) {
           console.log(contactsList[index]);
           let contact = contactsList[index];
-          contacts.push(new Contact(contact.contactId, contact.firstName, contact.secondName, contact.sex, contact.phone, contact.email));
+          contacts.push({
+            choosen: false,
+            matched: false,
+            contactId: contact.contactId, 
+            firstName: contact.firstName, 
+            secondName: contact.secondName, 
+            sex: contact.sex, 
+            phone: contact.phone, 
+            email: contact.email});
         }
         this.contacts = contacts;
         return (contacts);
