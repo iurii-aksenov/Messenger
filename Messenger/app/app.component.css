@@ -37,7 +37,8 @@ main {
     flex-wrap: nowrap;
     margin: 0 auto;
     background-color: #B0B0B0;
-    background-attachment: scroll;
+    background-clip: border-box;
+    background-attachment: scroll
 }
 
 .name {
@@ -47,6 +48,7 @@ main {
 article {
     border-radius: 3px;
     margin-right: 25px;
+    background-color: #262A33;
 }
 
 article:last-child {
@@ -57,12 +59,10 @@ article:last-child {
     flex-grow: 1;
     flex-shrink: 2;
     max-width: 300px;
-    background-color: #262A33;
 }
 
 .middle {
     flex-grow: 2;
     flex-shrink: 1;
-    background-color: #262A33;
     max-width: 300px;
 }

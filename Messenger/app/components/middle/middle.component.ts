@@ -37,7 +37,7 @@ export class MiddleComponent implements OnInit, OnDestroy {
 
     }
 
-    closeContact(close: boolean = false){
+    closeAddingContact(close: boolean = false){
         close ? this.middleService.closeAddingContact() : null;
     }
 

@@ -9,6 +9,7 @@ import 'rxjs/add/observable/throw';
 
 
 import { IContact, Contact } from "../models/contact.model";
+import { MiddleScreen } from "./../models/middle-screen.enum";
 
 
 import { AppService } from "./app.service";
@@ -23,7 +24,7 @@ export class DeltaContact {
 export class SidebarService {
     deltaContacts: DeltaContact[] = [new DeltaContact(0, null, "none")];
 
-    contacts: Contact[] = []; //ВЫнести в отдельный сервис, чтобы были отдельные методы для получения записи и проверки. СДелать подобие БД в сервисе с localstorage.
+    contacts: IContact[] = []; //ВЫнести в отдельный сервис, чтобы были отдельные методы для получения записи и проверки. СДелать подобие БД в сервисе с localstorage.
     checkCount: number = 0;
     matchedCount: number;
     isAllChecked: boolean = false;
@@ -37,20 +38,18 @@ export class SidebarService {
 
     //Добавление нового контакта в список контактов для данного аккаунта
     addContact(){
-        this.appService.changeMiddleScreenOnCreating();
+        this.appService.changeMiddleScreen(MiddleScreen.Creating);
     }
 
     //Получение списка контактов для данного аккаунта
-    getContacts(): Observable<Contact[]> {
-        return Observable.from<Contact[]>(
+    getContacts(): Observable<IContact[]> {
+        return Observable.from<IContact[]>(
                 this.appService.getContacts()
-                    .map((contacts:Contact[]) => {
+                    .map((contacts:IContact[]) => {
                         this.contacts = contacts;
                         this.contactsSort();
                         return this.contacts;
-                    }
-                    
-            )
+                    })
         );
     }
 
@@ -123,7 +122,9 @@ export class SidebarService {
     }
 
     //отправить письмо контакту
-    mailContact(contact: IContact): void { }
+    mailContact(contact: IContact): void {
+        this.appService.mailContact(contact);
+     }
     //отправить письмо выбранным котактам
     mailMatchedContacts(): void { }
     //позвониить контакты

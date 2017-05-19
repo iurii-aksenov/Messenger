@@ -1,35 +1,35 @@
 <div *ngIf="middleScreen == 0">
     <span>Hello World</span>
 </div>
-<contact-form *ngIf="middleScreen == 2" (add)="addContact($event)"></contact-form>
+<contact-form *ngIf="middleScreen == 2" (add)="addContact($event)" (close)="closeAddingContact($event)"></contact-form>
 
 
-<!--<div class="function-item undo-item">
-    <button class="btn backup icon" (click)="logIn()">
-        <i class="material-icons">undo</i>
+<!--<div class="function-item undo-item ">
+    <button class="btn backup icon " (click)="logIn() ">
+        <i class="material-icons ">undo</i>
     </button>
 </div>-->
 
 
-<!--<div class="contact-item">
+<!--<div class="contact-item ">
 
     
 
-    <div class="personal-info">
-        <div class="personal-name">
-            <span class="lastname"> {{ account.lastName }}</span>
-            <span class="firstname">{{ account.firstName }}</span>
-            <span class="firstname">{{ account.birthdate}}</span>
+    <div class="personal-info ">
+        <div class="personal-name ">
+            <span class="lastname "> {{ account.lastName }}</span>
+            <span class="firstname ">{{ account.firstName }}</span>
+            <span class="firstname ">{{ account.birthdate}}</span>
         </div>
-        <div class="personal-call">
+        <div class="personal-call ">
 
-            <span class="phone">-->
-<!--<i class="small-icon material-icons">email</i>-->
+            <span class="phone ">-->
+<!--<i class="small-icon material-icons ">email</i>-->
 <!--{{ account.email }}
             </span>
 
-            <span class="phone">-->
-<!--<i class="small-icon material-icons">phone</i>-->
+            <span class="phone ">-->
+<!--<i class="small-icon material-icons ">phone</i>-->
 <!--{{ account.phone }}
             </span>
         </div>

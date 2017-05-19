@@ -10,9 +10,9 @@ export interface IContact {
 }
 
 export class Contact implements IContact {
+    contactId: number;
     choosen: boolean = false;
     matched: boolean = true;
-    contactId: number;
     constructor(
         public firstName: string,
         public secondName: string = '',

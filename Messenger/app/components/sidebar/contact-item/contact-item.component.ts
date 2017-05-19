@@ -24,7 +24,7 @@ export class ContactItemComponent {
         this.checkContact.emit(this.contact);
     }
 
-    onMailDleteContact(){
+    onMailContact(){
         this.mailContact.emit(this.contact);
     }
 
@@ -35,7 +35,6 @@ export class ContactItemComponent {
     onDeleteContact(){
         this.deleteContact.emit(this.contact);
     }
-
     //TODO исправить посылку не весь объект а только его 
     //id  - то есть применить или отменить выбор данного объекта
 

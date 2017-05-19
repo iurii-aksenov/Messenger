@@ -29,7 +29,7 @@ export class MiddleService{
     }
 
     closeAddingContact(){
-        this.middleScreen.next(MiddleScreen.Greeting);
+        this.appService.closeAddingContact();
     }
 
     addContact(contact : Contact){

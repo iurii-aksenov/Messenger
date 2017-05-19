@@ -9,9 +9,7 @@ export class InMemoryDataService implements InMemoryDbService {
         const contacts = [
             {
 
-                contactId: 1,
-                choosen: false,
-                matched: true,
+                id: 1,
                 firstName: "Оксана",
                 secondName: "Ежакова",
                 middleName: "Федоровна",
@@ -22,9 +20,7 @@ export class InMemoryDataService implements InMemoryDbService {
 
             },
             {
-                contactId: 2,
-                choosen: false,
-                matched: true,
+                id: 2,
                 firstName: "Сергей",
                 secondName: "Поляков",
                 middleName: "Александрович",
@@ -34,9 +30,7 @@ export class InMemoryDataService implements InMemoryDbService {
                 password: "02"
             },
             {
-                contactId: 3,
-                choosen: false,
-                matched: true,
+                id: 3,
                 firstName: "Станислав",
                 secondName: "Конеев",
                 middleName: "Ларионович",
@@ -46,9 +40,7 @@ export class InMemoryDataService implements InMemoryDbService {
                 password: "03"
             },
             {
-                contactId: 4,
-                choosen: false,
-                matched: true,
+                id: 4,
                 firstName: "Андрей",
                 secondName: "Косицин",
                 middleName: "Валерьевич",
@@ -58,9 +50,7 @@ export class InMemoryDataService implements InMemoryDbService {
                 password: "04"
             },
             {
-                contactId: 5,
-                choosen: false,
-                matched: true,
+                id: 5,
                 firstName: "Александр",
                 secondName: "Лисица",
                 middleName: "Робертович",
@@ -68,18 +58,6 @@ export class InMemoryDataService implements InMemoryDbService {
                 phone: "89001805105",
                 email: "treat@yandex.ru",
                 password: "05"
-            },
-            {
-                contactId: 12,
-                choosen: false,
-                matched: true,
-                firstName: "Роман",
-                secondName: "Хрулиндиков",
-                mcontactIddleName: "Гибадулович",
-                sex: "MAN",
-                phone: "89001805112",
-                email: "heel@yandex.ru",
-                password: "12"
             }
 
         ];

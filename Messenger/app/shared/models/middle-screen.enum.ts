@@ -1,1 +1,1 @@
-export enum MiddleScreen { Greeting = 0, Messaging = 1, Creating = 2 };
+export enum MiddleScreenState { Greeting = 0, Messaging = 1, Creating = 2 };

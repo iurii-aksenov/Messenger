@@ -9,6 +9,7 @@ body {
     height: 100vh;
     color: #757575;
     background-color: #fafafa;
+    background-repeat: repeat;
 }
 
 ul {

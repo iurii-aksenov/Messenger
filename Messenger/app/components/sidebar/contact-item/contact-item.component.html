@@ -1,4 +1,4 @@
-<div class="contact-item" *ngIf="contact.matched" [class.checked]="contact.choosen">
+<div class="contact-item" *ngIf="contact.matched" [class.checked]="contact.choosen" (click)="onClick()">
 
     <button class="btn checkbox icon" (click)="onCheckContact()">
         <i class="material-icons">{{ contact.choosen ? 'check_box' : 'check_box_outline_blank'}}</i>

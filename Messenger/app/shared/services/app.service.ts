@@ -15,7 +15,7 @@ import { IContact } from "./../models/contact.model";
 @Injectable()
 export class AppService {
 
-  private apiUrl = 'api/contacts/';
+  private apiUrl = 'api/contacts';
   contacts: IContact[] = [];
 
   private middleScreen = new Subject<MiddleScreen>();
@@ -25,6 +25,11 @@ export class AppService {
     this.middleScreen.next(MiddleScreen.Creating);
   }
 
+  closeAddingContact(){
+    this.middleScreen.next(MiddleScreen.Greeting);
+
+  }
+
   changeMiddleScreenOnCreating() {
     this.middleScreen.next(MiddleScreen.Creating);
     console.log(this.middleScreen);
@@ -32,8 +37,7 @@ export class AppService {
 
   addContact(contact: IContact) {
 
-    console.log(contact);
-    console.log(JSON.stringify(contact));
+    this.contacts.push(contact);
 
     let headers = new Headers({ 'Content-Type':  'application/json;charset=utf-8'  });
     let options = new RequestOptions({ headers });
@@ -41,13 +45,14 @@ export class AppService {
 
     this.middleScreen.next(MiddleScreen.Greeting);
 
-    this.contacts.push(contact);
 
     return this.http.post(this.apiUrl, contact, {headers: headers})
       .map((resp:Response)   => {
-        let r = resp;
-        console.log(r);
+        resp.json().data;
+        
       })
+      .catch(this.handleError);
+      
   }
 
   getContacts(): Observable<Contact[]> {
