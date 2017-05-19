@@ -5,9 +5,9 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 
-import { MiddleScreen } from "../models/middle-screen.enum";
+import { MiddleScreenState } from "../models/middle-screen.enum";
 import { Contact } from "../models/contact.model";
-import { Account } from "../models/account.model";
+import { IAccount } from "../models/account.model";
 import { IContact } from "./../models/contact.model";
 
 
@@ -18,21 +18,26 @@ export class AppService {
   private apiUrl = 'api/contacts';
   contacts: IContact[] = [];
 
-  private middleScreen = new Subject<MiddleScreen>();
-  middleScreen$ = this.middleScreen.asObservable();
+  private middleScreenState = new Subject<MiddleScreenState>();
+  middleScreenState$ = this.middleScreenState.asObservable();
+
+  private interlocutor = new Subject<IContact>();
+  intelocutor$ = this.interlocutor.asObservable();
+
 
   constructor(private http: Http) {
-    this.middleScreen.next(MiddleScreen.Creating);
+    this.middleScreenState.next(MiddleScreenState.Creating);
+    this.interlocutor.next();
   }
 
-  closeAddingContact(){
-    this.middleScreen.next(MiddleScreen.Greeting);
 
+  changeMiddleScreenState(middleScreenState: MiddleScreenState) {
+    this.middleScreenState.next(middleScreenState);
+    console.log(this.middleScreenState);
   }
 
-  changeMiddleScreenOnCreating() {
-    this.middleScreen.next(MiddleScreen.Creating);
-    console.log(this.middleScreen);
+  changeInterlocutor(interlocutor: IContact){
+    this.interlocutor.next(interlocutor);
   }
 
   addContact(contact: IContact) {
@@ -43,36 +48,34 @@ export class AppService {
     let options = new RequestOptions({ headers });
     const body = JSON.stringify(contact);
 
-    this.middleScreen.next(MiddleScreen.Greeting);
-
-
-    return this.http.post(this.apiUrl, contact, {headers: headers})
+    this.changeMiddleScreenState(MiddleScreenState.Greeting);
+    return this.http.post(this.apiUrl, contact, options)
       .map((resp:Response)   => {
         resp.json().data;
         
       })
       .catch(this.handleError);
-      
   }
 
-  getContacts(): Observable<Contact[]> {
+  getContacts(): Observable<IContact[]> {
     return this.http.get(this.apiUrl)
       .map((res: Response) => {
         let contactsList = res.json().data;
         for (let index in contactsList) {
+
           console.log(contactsList[index]);
 
           let contact = contactsList[index];
           this.contacts.push({
             choosen: false,
             matched: true,
-            contactId: contact.id,
+            id: contact.id,
             firstName: contact.firstName,
             secondName: contact.secondName,
             sex: contact.sex,
             phone: contact.phone,
             email: contact.email
-          } as Contact);
+          } as IContact);
 
         }
         return (this.contacts);
@@ -96,28 +99,28 @@ export class AppService {
       })
       .catch((error: any) => { console.log(error); return Observable.throw(error); });
   }
+  
+  getMessages(account: IAccount, interlocutor: IContact){
 
-  // getContacts(){
-  //   return contacts;
-  // }
+  }
+
+  mailContact(contact: IContact){
+    this.changeMiddleScreenState(MiddleScreenState.Messaging);
+    this.changeInterlocutor(contact);
+
+
+  }
+
+
+
 
   private handleError(error: any) {
     console.error('Произошла ошибка', error);
     return Promise.reject(error.message || error);
   }
 
-  getContactsFromLocalStorage() {
-
-  }
-
-
-
-
-  updateList() {
-
-  }
-
-
+  getContactsFromLocalStorage() { }
+  updateList() { }
 }
 
 

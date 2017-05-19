@@ -1,5 +1,5 @@
 export interface IContact {
-    contactId: number;
+    id: number;
     choosen: boolean;
     matched: boolean;
     firstName: string;
@@ -10,7 +10,7 @@ export interface IContact {
 }
 
 export class Contact implements IContact {
-    contactId: number;
+    id: number;
     choosen: boolean = false;
     matched: boolean = true;
     constructor(

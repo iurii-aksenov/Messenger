@@ -9,7 +9,7 @@ import 'rxjs/add/observable/throw';
 
 
 import { IContact, Contact } from "../models/contact.model";
-import { MiddleScreen } from "./../models/middle-screen.enum";
+import { MiddleScreenState } from "./../models/middle-screen.enum";
 
 
 import { AppService } from "./app.service";
@@ -38,7 +38,7 @@ export class SidebarService {
 
     //Добавление нового контакта в список контактов для данного аккаунта
     addContact(){
-        this.appService.changeMiddleScreen(MiddleScreen.Creating);
+        this.appService.changeMiddleScreenState(MiddleScreenState.Creating);
     }
 
     //Получение списка контактов для данного аккаунта
@@ -131,15 +131,21 @@ export class SidebarService {
     phoneContact(contact: IContact): void { }
     //позваонить выьранным котактам
     phoneMatchedContacts(): void { }
-    //удалить контакта
-    //когла происзодит удаление ктотакта, спрева полтзователя просят подтвердить, далее просматривается весь массив, если у элемента массива совпадает id то далее контакт помещается в массив изменений
-    //если котнакт был выбран то количество выбранных уменьшаетя и количество совпдающих тоже становится меньше. и потом из самого массива контактов удаляется этот контакт. 
-    //если количество выбранный становится 0, то совйство все ли выбраны становится false
-    //происходит выход их цикла, чтобы не проверять весь остальной массив.
+    
+    /**
+     * Удалить контакт из списка контактов
+     * @param contact 
+     * 
+     * когла происзодит удаление ктотакта, спрева полтзователя просят подтвердить, далее просматривается весь массив, если у элемента массива совпадает id то далее контакт помещается в массив изменений
+     * если котнакт был выбран то количество выбранных уменьшаетя и количество совпдающих тоже становится меньше. и потом из самого массива контактов удаляется этот контакт. 
+     * если количество выбранный становится 0, то совйство все ли выбраны становится false
+     * происходит выход их цикла, чтобы не проверять весь остальной массив.
+     */
     deleteContact(contact: IContact): void {
+
         if (confirm("Do you want to delete " + contact.firstName + " " + contact.secondName+ "?")) {
             for (let i = 0; i < this.contacts.length; i++) {
-                if (this.contacts[i].contactId === contact.contactId) {
+                if (this.contacts[i].id === contact.id) {
                     this.deltaContactPush(this.contacts[i], "delete");
                     if (contact.choosen) {
                         this.checkCount--;
@@ -152,6 +158,7 @@ export class SidebarService {
             }
         }
     }
+    
     //удаление выбанных контактов
     deleteMatchedContacts(): void {
         if (confirm("Do you want to delete ALL CHECKED CONTACTS ?")) {
@@ -169,7 +176,9 @@ export class SidebarService {
         }
     }
 
-    //сгруппировать выбранные контакты
+    /**
+     * сгруппировать выбранные контакты
+     */
     groupMatchedContacts() {
 
     }

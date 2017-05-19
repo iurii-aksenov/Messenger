@@ -1,4 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
+import { IContact } from "./../models/contact.model";
 
 import { AppService } from "./app.service";
 import { Observable } from 'rxjs/Observable';
@@ -10,7 +11,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 
 
-import { MiddleScreen } from "../models/middle-screen.enum";
+import { MiddleScreenState } from "../models/middle-screen.enum";
 
 import { Contact } from "./../models/contact.model";
 import { IAccount } from "./../models/account.model";
@@ -18,18 +19,24 @@ import { IAccount } from "./../models/account.model";
 @Injectable()
 export class MiddleService{
 
-    private middleScreen = new Subject<MiddleScreen>()
-    middleScreen$ = this.middleScreen.asObservable();
+    private middleScreenState = new Subject<MiddleScreenState>()
+    middleScreenState$ = this.middleScreenState.asObservable();
+
+    private interlocutor = new Subject<IContact>();
+    interlocutor$ = this.interlocutor.asObservable();
 
     constructor(private appService: AppService) {
-        appService.middleScreen$.subscribe(middleScreenState =>
+        appService.middleScreenState$.subscribe(middleScreenState =>
         {
-            this.middleScreen.next(middleScreenState);
+            this.middleScreenState.next(middleScreenState);
+        })
+        appService.intelocutor$.subscribe(interlocutor =>{
+            this.interlocutor.next(interlocutor);
         })
     }
 
     closeAddingContact(){
-        this.appService.closeAddingContact();
+        this.appService.changeMiddleScreenState(MiddleScreenState.Greeting);
     }
 
     addContact(contact : Contact){
@@ -49,10 +56,8 @@ export class MiddleService{
 
     }
 
-    getAccount(id: number): Observable<IAccount> {
-        return Observable.from(
-            this.appService.getAccount(id)
-                .map(account => { return account; }));
+    getAccount(id: number) {
+        
     }
 
     

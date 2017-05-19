@@ -1,14 +1,12 @@
 export interface IMessage {
-    messageId: number;
-    owner: string;
-    interlocitor: string;
-    test: string;
+    id: number;
+    authorId: number;
+    text: string;
 }
 
 export class Message implements IMessage {
+    public id: number;
     constructor(
-        public messageId: number,
-        public owner: string,
-        public interlocitor: string,
-        public test: string) { }
+        public authorId: number,
+        public text: string) { }
 }

@@ -1,5 +1,5 @@
 export interface IAccount {
-    accountId: number;
+    id: number;
     choosen: boolean;
     matched: boolean;
     firstName: string;
@@ -12,9 +12,9 @@ export interface IAccount {
 }
 
 export class Account implements IAccount {
+    id: number;
     choosen: boolean = false;
     matched: boolean = true;
-    accountId: number;
     constructor(
         public password: string,
         public firstName: string = '',

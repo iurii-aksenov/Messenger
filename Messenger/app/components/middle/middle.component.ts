@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
 
-import { MiddleScreen } from "../../shared/models/middle-screen.enum";
+import { MiddleScreenState } from "../../shared/models/middle-screen.enum";
 import { IContact } from "./../../shared/models/contact.model";
 import { Account } from "./../../shared/models/account.model";
 import { MiddleService } from "./../../shared/services/middle.service";
@@ -17,8 +17,8 @@ import { MiddleService } from "./../../shared/services/middle.service";
 })
 export class MiddleComponent implements OnInit, OnDestroy {
 
-    middleScreen: MiddleScreen  = MiddleScreen.Creating;
-    middleScreenSubscription: Subscription;
+    middleScreenState: MiddleScreenState  = MiddleScreenState.Creating;
+    middleScreenStateSubscription: Subscription;
 
 
     account: Account;
@@ -26,8 +26,8 @@ export class MiddleComponent implements OnInit, OnDestroy {
 
 
     constructor(private middleService: MiddleService) {
-        this.middleScreenSubscription = middleService.middleScreen$.subscribe(middleScreeState => {
-            this.middleScreen = middleScreeState == null ? MiddleScreen.Greeting : middleScreeState;
+        this.middleScreenStateSubscription = middleService.middleScreenState$.subscribe(middleScreenState => {
+            this.middleScreenState = middleScreenState == null ? MiddleScreenState.Greeting : middleScreenState;
         });
         this.account = null;
     }
@@ -46,23 +46,23 @@ export class MiddleComponent implements OnInit, OnDestroy {
     }
 
     logIn(id: number) {
-        this.middleService.getAccount(1)
-            .subscribe((account) => {
-                this.account = new Account(
-                    account.password,
-                    account.firstName,
-                    account.lastName,
-                    account.birthdate,
-                    account.sex,
-                    account.phone,
-                    account.email,
-                );
-            }
-            )
+        // this.middleService.getAccount(1)
+        //     .subscribe((account) => {
+        //         this.account = new Account(
+        //             account.password,
+        //             account.firstName,
+        //             account.lastName,
+        //             account.birthdate,
+        //             account.sex,
+        //             account.phone,
+        //             account.email,
+        //         );
+        //     }
+        //     )
     }
 
     ngOnDestroy() {
-        this.middleScreenSubscription.unsubscribe();
+        this.middleScreenStateSubscription.unsubscribe();
     }
 
 
