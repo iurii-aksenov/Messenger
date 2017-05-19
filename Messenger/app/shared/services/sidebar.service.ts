@@ -35,8 +35,8 @@ export class SidebarService {
         //this.contacts = JSON.parse(localStorage.getItem("ContactsBook.contacts"));;
     }
 
-    addContact(){
-        this.contacts.push(new Contact(5,'885','855','man','9876543210','123456789'));
+    createContact(){
+        this.appService.changeMiddleScreenOnCreating();
     }
 
 

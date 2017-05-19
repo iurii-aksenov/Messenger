@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MiddleService } from "./../../shared/services/middle.service";
 import { Account } from "./../../shared/models/account.model";
+import { Observable } from 'rxjs/Observable';
+import { Subscription }   from 'rxjs/Subscription';
+
 
 
 
@@ -12,9 +15,16 @@ import { Account } from "./../../shared/models/account.model";
 })
 export class MiddleComponent implements OnInit {
 
+    middleScreen: number = MiddleScreen.Greeting;
+    middleScreenSubscription: Subscription;
+
+    
     account: Account;
 
+   
+
     constructor(private middleService: MiddleService) { 
+        this.middleScreenSubscription = middleService.
         this.account = null;
     }
 

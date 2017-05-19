@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { SidebarService } from "../../../shared/sidebar.service";
+import { SidebarService } from "../../../shared/services/sidebar.service";
 
 @Component({
     moduleId: module.id,

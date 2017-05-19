@@ -1,0 +1,1 @@
+enum MiddleScreen { Greeting, Messaging, Creating };

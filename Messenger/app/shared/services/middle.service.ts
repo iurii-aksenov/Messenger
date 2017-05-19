@@ -1,6 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { AppService } from "./app.service";
 import { Observable } from 'rxjs/Observable';
+import { Subscription }   from 'rxjs/Subscription';
+import { Subject }   from 'rxjs/Subject';
 //import 'rxjs/add/operator/fromPromise';
 // import 'rxjs/add/operator/catch';
 // import 'rxjs/add/observable/throw';
@@ -11,9 +13,16 @@ import { Contact } from '../models/contact.model';
 import { Account } from '../models/account.model';
 
 @Injectable()
-export class MiddleService {
+export class MiddleService implements OnDestroy{
+
+    middleScreen = new Subject<MiddleScreen>()
+    middleScreen$ = this.middleScreen.asObservable();
 
     constructor(private appService: AppService) {
+        this.middleScreen.subscribe(middleScreenState =>
+        {
+            this.middleScreen = middleScreenState;
+        })
     }
 
     getContacts(): Observable<Contact[]> {
@@ -35,9 +44,10 @@ export class MiddleService {
                 .map(account => { return account; }));
     }
 
-    createContact(contact: Contact) {
-        return this.appService.createContact(contact);
-
+    ngOnDestroy(){
+        this.middleScreenSubscriptin.unsubscribe();
     }
+
+    
 
 }
