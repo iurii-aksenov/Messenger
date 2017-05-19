@@ -35,14 +35,14 @@ export class SidebarService {
         //this.contacts = JSON.parse(localStorage.getItem("ContactsBook.contacts"));;
     }
 
+    //Добавление нового контакта в список контактов для данного аккаунта
     createContact(){
         this.appService.changeMiddleScreenOnCreating();
     }
 
-
+    //Получение списка контактов для данного аккаунта
     getContacts(): Observable<Contact[]> {
         return Observable.from<Contact[]>(
-       
                 this.appService.getContacts()
                     .map(contacts => {
                         this.contacts = contacts;

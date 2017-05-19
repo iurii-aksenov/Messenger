@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 
-
+import { MiddleScreen } from "../models/middle-screen.enum";
 import { Contact } from "../models/contact.model";
 import { Account } from "../models/account.model";
 
@@ -17,10 +17,34 @@ export class AppService {
 
   private apiUrl = 'api/contacts';
   contacts: Contact[] = [];
-  private middleScreen = new Subject<number>();
+
+  private middleScreen = new Subject<MiddleScreen>();
   middleScreen$ = this.middleScreen.asObservable();
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    this.middleScreen.next(MiddleScreen.Creating);
+   }
+
+  changeMiddleScreenOnCreating() {
+    this.middleScreen.next(MiddleScreen.Creating);
+    console.log(this.middleScreen);
+  }
+
+  createContact() {
+
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers });
+    const body = 5;//= JSON.stringify(contact);
+
+    return this.http.post(this.apiUrl, body, options)
+      .map(res => {
+        res.json().data;
+        console.log(res);
+      })
+      .catch(this.handleError);
+
+
+  }
 
   getContacts(): Observable<Contact[]> {
     return this.http.get(this.apiUrl)
@@ -65,53 +89,8 @@ export class AppService {
 
   }
 
-  // getContacts(): Observable<Contact[]>{
 
-  //     return this.http.get('app/shared/contacts.json')
-  //     .map((resp: Response) => {
-
-  //         let contactsList = resp.json().contacts;
-  //         let contacts: Contact[] = [];
-  //         for (let index in contactsList) {
-  //             console.log(contactsList[index]);
-  //             let contact = contactsList[index];
-  //             contacts.push(new Contact(
-  //                 contact.id,
-  //                 contact.firstName,
-  //                 contact.lastName,
-  //                 contact.gender,
-  //                 contact.phone,
-  //                 contact.email))
-  //         }
-  //     return contacts;
-  //     })
-  //     .catch((error: any)=> {return Observable.throw(error)});
-  // }
-
-  changeMiddleScreenOnCreating() {
-    this.middleScreen.next(MiddleScreen.Creating);
-    console.log(this.middleScreen);
-  }
-  createContact() {
-
-
-
-
-
-
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers });
-    const body = 5;//= JSON.stringify(contact);
-
-    return this.http.post(this.apiUrl, body, options)
-      .map(res => {
-        res.json().data;
-        console.log(res);
-      })
-      .catch(this.handleError);
-
-
-  }
+  
 
   updateList(): Promise<Contact[]> {
     return this.http.get(this.apiUrl)

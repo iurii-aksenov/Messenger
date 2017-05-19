@@ -8,21 +8,26 @@ import { Subject }   from 'rxjs/Subject';
 // import 'rxjs/add/observable/throw';
 import 'rxjs/Rx';
 
+import { MiddleScreen } from "../models/middle-screen.enum";
 
 import { Contact } from '../models/contact.model';
 import { Account } from '../models/account.model';
 
 @Injectable()
-export class MiddleService implements OnDestroy{
+export class MiddleService{
 
-    middleScreen = new Subject<MiddleScreen>()
+    private middleScreen = new Subject<MiddleScreen>()
     middleScreen$ = this.middleScreen.asObservable();
 
     constructor(private appService: AppService) {
-        this.middleScreen.subscribe(middleScreenState =>
+        appService.middleScreen$.subscribe(middleScreenState =>
         {
-            this.middleScreen = middleScreenState;
+            this.middleScreen.next(middleScreenState);
         })
+    }
+
+    closeAddingContact(){
+        this.middleScreen.next(MiddleScreen.Greeting);
     }
 
     getContacts(): Observable<Contact[]> {
@@ -44,10 +49,7 @@ export class MiddleService implements OnDestroy{
                 .map(account => { return account; }));
     }
 
-    ngOnDestroy(){
-        this.middleScreenSubscriptin.unsubscribe();
-    }
-
+    
     
 
 }

@@ -37,4 +37,8 @@ export class ContactFormComponent {
         return null;
     }
 
+    onCloseAddingContact(){
+        this.middleService.closeAddingContact();
+    }
+
 }

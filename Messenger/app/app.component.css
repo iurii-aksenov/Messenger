@@ -49,20 +49,20 @@ article {
     margin-right: 25px;
 }
 
-article::last-child {
+article:last-child {
     margin-right: 0px
 }
 
 .sidebar {
     flex-grow: 1;
-    min-width: 310px;
-    max-width: 500px;
+    flex-shrink: 2;
+    max-width: 300px;
     background-color: #262A33;
 }
 
-.middle-part {
-    flex-grow: 1;
-    min-width: 400px;
+.middle {
+    flex-grow: 2;
+    flex-shrink: 1;
     background-color: #262A33;
-    max-width: 600px;
+    max-width: 300px;
 }

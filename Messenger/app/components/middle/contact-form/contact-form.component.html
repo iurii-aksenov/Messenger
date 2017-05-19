@@ -1,6 +1,12 @@
 <form class="contacts-form" enctype="multipart/form-data" [formGroup]="contactForm" novalidate (ngSubmit)="onCreateContact(); contactForm.reset()">
+
+    <button class="btn close icon" (click)="onCloseAddingContact()">
+        <i class="material-icons">close</i>
+    </button>
+
+
     <fieldset>
-        <legend>Main information</legend>
+        <legend>Add contact</legend>
         <div class="input-container form-group">
             <label for="user-first-name-field-id">Enter first name</label>
             <input id="user-first-name-field-id" type="text" name="contactFirstName" formControlName="contactFirstName" placeholder="John" autofocus tabindex="1">

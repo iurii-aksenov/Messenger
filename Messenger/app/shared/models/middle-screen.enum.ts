@@ -1,1 +1,1 @@
-enum MiddleScreen { Greeting, Messaging, Creating };
+export enum MiddleScreen { Greeting = 0, Messaging = 1, Creating = 2 };
