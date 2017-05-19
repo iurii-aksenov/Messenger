@@ -51,7 +51,7 @@ export class ContactFormComponent {
             'ANY',
             this.contactForm.controls['contactPhone'].value,
             this.contactForm.controls['contactEmail'].value)
-        console.log(contact)
+        //console.log(contact)
 
         this.add.emit(contact);
     };

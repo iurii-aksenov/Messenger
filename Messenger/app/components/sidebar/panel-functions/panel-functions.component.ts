@@ -46,8 +46,8 @@ export class PanelFunctionsComponent implements OnInit {
         this.sidebarService.updateList();
     }
 
-    onCreateContact(){
-        this.sidebarService.createContact();
+    onAddContact(){
+        this.sidebarService.addContact();
     }
 
     onClose() {

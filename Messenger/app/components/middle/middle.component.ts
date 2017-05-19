@@ -28,7 +28,6 @@ export class MiddleComponent implements OnInit, OnDestroy {
     constructor(private middleService: MiddleService) {
         this.middleScreenSubscription = middleService.middleScreen$.subscribe(middleScreeState => {
             this.middleScreen = middleScreeState == null ? MiddleScreen.Greeting : middleScreeState;
-            console.log(middleScreeState);
         });
         this.account = null;
     }

@@ -33,7 +33,7 @@ export class MiddleService{
     }
 
     addContact(contact : Contact){
-        this.middleScreen.next(MiddleScreen.Greeting);
+        this.appService.addContact(contact);
     }
 
     getContacts(): Observable<Contact[]> {

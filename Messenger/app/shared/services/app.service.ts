@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http'
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Response } from '@angular/http'
-import { Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
@@ -16,7 +15,7 @@ import { IContact } from "./../models/contact.model";
 @Injectable()
 export class AppService {
 
-  private apiUrl = 'api/contacts';
+  private apiUrl = 'api/contacts/';
   contacts: IContact[] = [];
 
   private middleScreen = new Subject<MiddleScreen>();
@@ -24,55 +23,59 @@ export class AppService {
 
   constructor(private http: Http) {
     this.middleScreen.next(MiddleScreen.Creating);
-   }
+  }
 
   changeMiddleScreenOnCreating() {
     this.middleScreen.next(MiddleScreen.Creating);
     console.log(this.middleScreen);
   }
 
-  addContact(contact : IContact) {
+  addContact(contact: IContact) {
 
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    console.log(contact);
+    console.log(JSON.stringify(contact));
+
+    let headers = new Headers({ 'Content-Type':  'application/json;charset=utf-8'  });
     let options = new RequestOptions({ headers });
     const body = JSON.stringify(contact);
 
-    return this.http.post(this.apiUrl, body, options)
-      .map(res => {
-        res.json().data;
-        console.log(res);
+    this.middleScreen.next(MiddleScreen.Greeting);
+
+    this.contacts.push(contact);
+
+    return this.http.post(this.apiUrl, contact, {headers: headers})
+      .map((resp:Response)   => {
+        let r = resp;
+        console.log(r);
       })
-      .catch(this.handleError);
-
-
   }
 
   getContacts(): Observable<Contact[]> {
     return this.http.get(this.apiUrl)
       .map((res: Response) => {
         let contactsList = res.json().data;
-        //let contacts: Contact[] = [];
-
         for (let index in contactsList) {
           console.log(contactsList[index]);
+
           let contact = contactsList[index];
           this.contacts.push({
             choosen: false,
-            matched: false,
-            contactId: contact.contactId, 
-            firstName: contact.firstName, 
-            secondName: contact.secondName, 
-            sex: contact.sex, 
-            phone: contact.phone, 
-            email: contact.email});
-        }
-        
+            matched: true,
+            contactId: contact.id,
+            firstName: contact.firstName,
+            secondName: contact.secondName,
+            sex: contact.sex,
+            phone: contact.phone,
+            email: contact.email
+          } as Contact);
 
-        console.log('from app');
-        console.log(this.contacts);
+        }
         return (this.contacts);
       })
-
+      .catch(error => {
+        this.handleError(error);
+        return Observable.throw(error);
+      })
 
   }
 
@@ -103,10 +106,10 @@ export class AppService {
   }
 
 
-  
+
 
   updateList() {
-    
+
   }
 
 

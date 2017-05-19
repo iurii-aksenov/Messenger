@@ -36,7 +36,7 @@ export class SidebarService {
     }
 
     //Добавление нового контакта в список контактов для данного аккаунта
-    createContact(){
+    addContact(){
         this.appService.changeMiddleScreenOnCreating();
     }
 
@@ -46,8 +46,7 @@ export class SidebarService {
                 this.appService.getContacts()
                     .map((contacts:Contact[]) => {
                         this.contacts = contacts;
-                        console.log('from sidebar');
-                        console.log(contacts);
+                        this.contactsSort();
                         return this.contacts;
                     }
                     
